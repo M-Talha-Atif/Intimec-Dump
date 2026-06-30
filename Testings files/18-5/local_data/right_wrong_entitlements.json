@@ -1,0 +1,36 @@
+{
+  "roles": [
+    {
+      "externalRef": "ENT-CORRECT-001",
+      "name": "Entitlement Correct Alpha",
+      "displayName": "Entitlement Correct Alpha",
+      "description": "Valid entitlements",
+      "type": "technical",
+      "status": "enabled",
+      "organization": "ad2af90c-45c2-4b2e-b2c8-de868fa79623",
+      "businessUnit": "Security",
+      "businessFunction": "Access Control",
+      "requestable": false,
+      "requireApproval": false,
+      "entitlementIds": [
+        "c5c84146-7023-4145-8cee-50607ae4715f"
+      ]
+    },
+    {
+      "externalRef": "ENT-WRONG-001",
+      "name": "Entitlement Wrong Alpha",
+      "displayName": "Entitlement Wrong Alpha",
+      "description": "Invalid entitlement",
+      "type": "technical",
+      "status": "enabled",
+      "organization": "ad2af90c-45c2-4b2e-b2c8-de868fa79623",
+      "businessUnit": "Security",
+      "businessFunction": "Access Control",
+      "requestable": false,
+      "requireApproval": false,
+      "entitlementIds": [
+        "00000000-0000-0000-0000-000000000888"
+      ]
+    }
+  ]
+}

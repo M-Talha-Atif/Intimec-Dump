@@ -1,0 +1,1 @@
+update users set password_hash='$2a$10$H/wfVhlPwzs8afGasb49zOULAjN3Q8aExdcxELe1i2FOSRRLHXRg6';

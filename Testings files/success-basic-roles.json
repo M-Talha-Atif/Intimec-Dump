@@ -1,0 +1,108 @@
+{
+  "roles": [
+    {
+      "name": "Finance Analyst GPT Test 001",
+      "displayName": "Finance Analyst GPT Test 001",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Finance",
+      "entitlementIds": ["c5c84146-7023-4145-8cee-50607ae4715f"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 10,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "EQUALS", "value": "Finance" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HR Recruiter GPT Test 002",
+      "displayName": "HR Recruiter GPT Test 002",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Human Resources",
+      "entitlementIds": ["b5d42bbb-a60c-4c59-98d0-2b2fb5aa0d03"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 20,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "jobTitle", "operator": "CONTAINS", "value": "Recruiter" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Engineer GPT Test 003",
+      "displayName": "Engineer GPT Test 003",
+      "type": "technical",
+      "status": "ACTIVE",
+      "businessUnit": "Engineering",
+      "entitlementIds": ["ae572670-e582-46a1-8f89-eb1915405a0c"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 30,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "EQUALS", "value": "Engineering" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finance Manager GPT Test 004",
+      "displayName": "Finance Manager GPT Test 004",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Finance",
+      "entitlementIds": ["cb06bad3-462c-4df8-be1f-11294eceb76d"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 40,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "jobTitle", "operator": "CONTAINS", "value": "Manager" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

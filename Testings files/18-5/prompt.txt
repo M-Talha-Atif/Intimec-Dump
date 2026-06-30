@@ -1,0 +1,150 @@
+types belong only to business, application, technical, functional
+---You are helping me create test files for an access-role import API.
+
+Context:
+I have an identity-service API for importing access roles.
+
+Import endpoint:
+POST /api/v1/access-roles/import?format=json
+POST /api/v1/access-roles/import?format=csv
+
+The import supports JSON and CSV.
+
+Each imported access role row can have these fields:
+- externalRef: optional stable reference used by childRoleRefs
+- name: required string
+- displayName: optional string
+- description: optional string
+- type: required string, examples: business, technical
+- status: optional string, example: ACTIVE
+- businessUnit: optional string
+- organization: required UUID, references org_units.id
+- businessFunction: optional string
+- classification: optional list of strings
+- complianceTags: optional list of strings
+- riskLevel: optional string, examples: low, medium, high
+- riskReason: optional string
+- ownerId: optional UUID
+- requestable: optional boolean
+- requireApproval: optional boolean
+- certificationSchedule: optional string, examples: MONTHLY, QUARTERLY, ANNUALLY
+- entitlementIds: optional list of UUIDs
+- childRoleIds: optional list of existing access-role UUIDs
+- childRoleRefs: optional list of externalRef values from other rows in same import
+- identityIds: optional list of identity UUIDs to assign this imported role to
+- rules: optional JSON array of assignment rules
+
+Important behavior:
+- organization is mandatory for every imported role row.
+- identityIds is optional.
+- If identityIds is provided, after the role is created and childRoleRefs are wired, the system assigns that imported role to those identities.
+- Those identity role assignments are created with source_type = IMPORT.
+- Role-derived entitlements from the parent role and inherited child roles are applied with source = IMPORT.
+- childRoleRefs are resolved by matching externalRef values within the same import file.
+- For CSV, multi-value fields must be pipe-delimited using |.
+- For CSV, the rules column may contain a JSON array and must be CSV-escaped if it has commas or quotes.
+
+JSON format:
+The JSON import can be either:
+1. An object with roles array:
+{
+  "roles": [
+    { role row },
+    { role row }
+  ]
+}
+
+or:
+2. A raw array:
+[
+  { role row },
+  { role row }
+]
+
+CSV header:
+externalRef,name,displayName,description,type,status,businessUnit,organization,businessFunction,classification,complianceTags,riskLevel,riskReason,ownerId,requestable,requireApproval,certificationSchedule,entitlementIds,childRoleIds,childRoleRefs,identityIds,rules
+
+CSV rules:
+- classification uses pipe delimiter, example: SOX|GDPR
+- complianceTags uses pipe delimiter, example: PII|FINANCE
+- entitlementIds uses pipe delimiter, example: uuid1|uuid2
+- childRoleIds uses pipe delimiter, example: uuid1|uuid2
+- childRoleRefs uses pipe delimiter, example: CHILD-ROLE-001|CHILD-ROLE-002
+- identityIds uses pipe delimiter, example: identityUuid1|identityUuid2
+- Leave optional blank cells empty.
+- Keep the exact CSV header order above.
+
+Sample organization UUIDs available:
+- Corporate: 11111111-1111-1111-1111-111111111111
+- Finance: 22222222-2222-2222-2222-222222222222
+- Human Resources: 33333333-3333-3333-3333-333333333333
+- Engineering: 44444444-4444-4444-4444-444444444444
+- Sales: 55555555-5555-5555-5555-555555555555
+
+Use these placeholder entitlement UUIDs unless I provide real ones:
+- aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+- bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+- cccccccc-cccc-cccc-cccc-cccccccccccc
+- dddddddd-dddd-dddd-dddd-dddddddddddd
+
+Use these placeholder identity UUIDs unless I provide real ones:
+- 11111111-aaaa-1111-aaaa-111111111111
+- 22222222-aaaa-2222-aaaa-222222222222
+- 33333333-aaaa-3333-aaaa-333333333333
+- 44444444-aaaa-4444-aaaa-444444444444
+
+Task:
+Generate both:
+1. A JSON import file.
+2. A CSV import file.
+
+The test data should include:
+- At least 5 roles.
+- At least 2 parent roles.
+- At least 3 child roles.
+- Parent roles should use childRoleRefs, not childRoleIds.
+- At least one parent role should have identityIds.
+- At least one child role should have entitlementIds.
+- Include organization for every role.
+- Use different organizations across roles.
+- Include realistic businessUnit, businessFunction, classification, complianceTags, riskLevel, riskReason.
+- Make names and externalRef values unique.
+- Keep CSV valid and copy-paste ready.
+- For CSV, do not wrap every field in quotes unless needed.
+- For CSV, ensure every row has the same number of columns as the header.
+
+Return output in two sections:
+1. JSON import
+2. CSV import
+
+Do not explain the API. Just return the generated JSON and CSV with meaning of each what it have.
+
+Identity ids that you can use:
+5df00ac2-4ba9-484b-8771-8c99101af167
+"f6d5d315-d20f-41b9-a60d-21db3d3c380e"
+"04d56972-8f70-4289-866d-d464ab8e08f6"
+"5b8a6fdc-5e45-499a-9569-d4855cb17b38"
+"4a1240b4-1e84-497f-9328-709a0b17c80f"
+"005a80e3-7d6b-4a2b-8679-d0826254a0c4"
+"7d6b372f-8ab4-4a9c-9fc0-3137630d8777"
+"b6a90b36-dd52-402f-a2f9-a580d6ebe06f"
+"954d9e2f-a076-4a32-ade4-fc3c49293635"
+"2dc42465-0f00-49a3-861d-82fc62723995"
+"1f40e761-b518-410a-bf73-66a6de061017"
+"f2077930-352f-4c2f-83f9-5e912942b0e2"
+"86a58306-82bd-4ccf-8513-b1387f9631de"
+"939079ff-0ce4-4ce9-b80b-ccd012a610d0"
+"55e75137-b5b7-4642-9b46-092a70265560"
+"4838da59-748f-4f37-8181-5cade95d8acd"
+"713f4cb8-0d79-4e2d-8e3d-2fcbf4c16580"
+"15f49fd8-3034-4728-8120-e808937a98e2"
+"6b82cf71-7d49-42a3-9816-370bf8bbbd74"
+"0b7cc2c6-e4d8-4092-afc9-8c09055bba35"
+"8b711d52-47f7-47e9-a9b5-e79bd1b6a82e"
+"6b0c7656-c109-45ac-8194-341d511988a7"
+"ce2b733c-2fb1-45a6-aa9d-0a00b4c958d5"
+"b2927c86-043c-4c26-ae76-7789136e4ad0"
+"f1fe8d10-fce0-4220-b13c-e4b44981b889"
+"940b822b-e168-4fad-bbcf-6a0dd8efc930"
+
+above are identity ids that you can use give me first json or csv to test with correct use case to test it only 1 json and csv first

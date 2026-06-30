@@ -1,0 +1,11 @@
+id,first_name,last_name,email,phone,department,job_title,salary,hire_date,city
+1001,Ali,Khan,ali.khan@example.com,03001234567,Engineering,Software Engineer,120000,2022-03-15,Lahore
+1002,Sara,Ahmed,sara.ahmed@example.com,03007654321,HR,HR Manager,90000,2021-07-10,Karachi
+1003,Usman,Sheikh,usman.sheikh@example.com,03111222333,Finance,Accountant,80000,2020-11-05,Islamabad
+1004,Ayesha,Raza,ayesha.raza@example.com,03219876543,Marketing,Marketing Executive,75000,2023-01-20,Faisalabad
+1005,Hassan,Ali,hassan.ali@example.com,03331234567,Engineering,Backend Developer,110000,2022-06-18,Lahore
+1006,Zainab,Malik,zainab.malik@example.com,03451234567,Sales,Sales Manager,95000,2021-09-25,Multan
+1007,Bilal,Chaudhry,bilal.chaudhry@example.com,03005556666,Engineering,Frontend Developer,100000,2023-04-12,Rawalpindi
+1008,Mariam,Shah,mariam.shah@example.com,03114445555,Support,Customer Support Rep,60000,2022-12-01,Karachi
+1009,Farhan,Iqbal,farhan.iqbal@example.com,03225556666,Finance,Financial Analyst,85000,2020-05-30,Islamabad
+1010,Nida,Aslam,nida.aslam@example.com,03336667777,HR,Recruiter,70000,2023-02-14,Lahore

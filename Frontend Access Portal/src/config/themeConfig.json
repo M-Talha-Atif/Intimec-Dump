@@ -1,0 +1,33 @@
+{
+  "branding": {
+    "organizationName": "Identity Inc.dd",
+    "tagline": "Secure Identity Management",
+    "footerText": "© 2024 Identity Inc. All rights rese3333rved."
+  },
+  "theme": {
+    "primaryColor": "#428C95",
+    "secondaryColor": "#64748b",
+    "accentColor": "#3b82f6",
+    "darkPrimaryColor": "#367278",
+    "darkSecondaryColor": "#0f172a",
+    "darkAccentColor": "#f1f5f9",
+    "roundedStyle": "sharp",
+    "darkMode": false,
+    "sidebarStyle": {
+      "backgroundColor": "#f8fafc",
+      "width": "normal"
+    }
+  },
+  "typography": {
+    "fontFamily": "Inter",
+    "fontSize": "medium",
+    "heading1FontWeight": "600",
+    "heading2FontWeight": "500",
+    "heading3FontWeight": "400",
+    "bodyFontWeight": "400",
+    "heading1Size": "xl",
+    "heading2Size": "lg",
+    "heading3Size": "base",
+    "bodySize": "base"
+  }
+}

@@ -1,0 +1,237 @@
+import { SourcePriority } from "@/components/identity-mapping/types";
+import { _getAuthToken } from "@/lib/auth";
+import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { cookies } from 'next/headers';
+
+const API_BASE_URL = process.env.API_URL || "http://localhost:8090/api/v1";
+
+// Map frontend identity type values to backend enum values
+const toBackendIdentityType = (schemaId: string): string => {
+  const map: Record<string, string> = {
+    "employee": "EMPLOYEE",
+    "non-employee": "NON_EMPLOYEE",
+    "non-human": "NON_HUMAN",
+  };
+  return map[schemaId] ?? schemaId;
+};
+
+/**
+ * GET /api/identity/mapping/policies/[schemaId]/source/priorities
+ * Retrieves source priorities for a specific identity mapping policy schema
+ */
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ schemaId: string }> }
+) {
+  try {
+    const { schemaId } = await params;
+
+    console.log(
+      "API Route - GET /api/identity/mapping/policies/[schemaId]/source/priorities"
+    );
+    console.log("schemaId:", schemaId);
+
+    if (!schemaId) {
+      return NextResponse.json(
+        { error: "schemaId path parameter is required" },
+        { status: 400 }
+      );
+    }
+
+    // Map frontend identity type (e.g. "employee") to backend enum (e.g. "EMPLOYEE")
+    const identityType = toBackendIdentityType(schemaId);
+    const apiUrl = `${API_BASE_URL}/identity/priorities/policies/${identityType}`;
+    console.log("Making request to backend:", apiUrl);
+
+    const authToken = await _getAuthToken();
+    console.log("Auth token available:", !!authToken);
+
+    const cookieStore = await cookies();
+    const sessionId = cookieStore.get('session_id')?.value;
+    
+    const headers: Record<string, string> = {
+      Authorization: `Bearer ${authToken}`,
+      "Content-Type": "application/json",
+    };
+    
+    if (sessionId) {
+      headers['X-Session-Id'] = sessionId;
+    }
+
+    // Call the actual backend API
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers,
+    });
+
+    console.log("Backend response status:", response.status);
+    console.log(
+      "Backend response headers:",
+      Object.fromEntries(response.headers.entries())
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.log("Backend error response:", errorData);
+      console.log("Backend error status:", response.status);
+      console.log("Backend error statusText:", response.statusText);
+
+      return NextResponse.json(
+        {
+          error:
+            errorData.message ||
+            `Failed to fetch source priorities: ${response.status} ${response.statusText}`,
+        },
+        { status: response.status }
+      );
+    }
+
+    // Check if response has content and is JSON
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      console.log("Source priorities response:", data);
+      return NextResponse.json(data);
+    } else {
+      // Handle non-JSON responses (like 204 No Content or plain text)
+      const text = await response.text();
+      return NextResponse.json({ message: text || "Success" });
+    }
+  } catch (error: unknown) {
+    console.error(
+      "Error in GET /api/identity/mapping/policies/[schemaId]/source/priorities:",
+      error
+    );
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * PUT /api/identity/mapping/policies/[schemaId]/source/priorities
+ * Updates source priorities for a specific identity mapping policy schema
+ */
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ schemaId: string }> }
+) {
+  try {
+    const { schemaId } = await params;
+
+    console.log(
+      "API Route - PUT /api/identity/mapping/policies/[schemaId]/source/priorities"
+    );
+    console.log("schemaId:", schemaId);
+
+    if (!schemaId) {
+      return NextResponse.json(
+        { error: "schemaId path parameter is required" },
+        { status: 400 }
+      );
+    }
+
+    // Parse request body
+    let sourcePriorities: SourcePriority[];
+    try {
+      sourcePriorities = await request.json();
+    } catch {
+      return NextResponse.json(
+        { error: "Invalid JSON in request body" },
+        { status: 400 }
+      );
+    }
+
+    // Validate request body
+    if (!Array.isArray(sourcePriorities)) {
+      return NextResponse.json(
+        { error: "Request body must be an array of SourcePriority objects" },
+        { status: 400 }
+      );
+    }
+
+    // Validate each source priority object
+    for (const [index, priority] of sourcePriorities.entries()) {
+      if (
+        !priority.resourceId ||
+        !priority.sourceName ||
+        typeof priority.priority !== "number"
+      ) {
+        return NextResponse.json(
+          {
+            error: `Invalid SourcePriority object at index ${index}. Required fields: resourceId, sourceName, priority`,
+          },
+          { status: 400 }
+        );
+      }
+    }
+
+    console.log("Source priorities to update:", sourcePriorities);
+
+    // Map frontend identity type (e.g. "employee") to backend enum (e.g. "EMPLOYEE")
+    const identityType = toBackendIdentityType(schemaId);
+    const apiUrl = `${API_BASE_URL}/identity/priorities/policies/${identityType}`;
+    console.log("Making PUT request to backend:", apiUrl);
+
+    const authToken = await _getAuthToken();
+    console.log("Auth token available:", !!authToken);
+
+    // Call the actual backend API
+    const response = await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sourcePriorities),
+    });
+
+    console.log("Backend PUT response status:", response.status);
+    console.log(
+      "Backend PUT response headers:",
+      Object.fromEntries(response.headers.entries())
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.log("Backend PUT error response:", errorData);
+      console.log("Backend PUT error status:", response.status);
+      console.log("Backend PUT error statusText:", response.statusText);
+
+      return NextResponse.json(
+        {
+          error:
+            errorData.message ||
+            `Failed to update source priorities: ${response.status} ${response.statusText}`,
+        },
+        { status: response.status }
+      );
+    }
+
+    // Check if response has content and is JSON
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      console.log("Source priorities update response:", data);
+      return NextResponse.json(data);
+    } else {
+      // Handle non-JSON responses (like 204 No Content or plain text)
+      const text = await response.text();
+      return NextResponse.json({
+        message: text || "Source priorities updated successfully",
+        success: true,
+      });
+    }
+  } catch (error: unknown) {
+    console.error(
+      "Error in PUT /api/identity/mapping/policies/[schemaId]/source/priorities:",
+      error
+    );
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}

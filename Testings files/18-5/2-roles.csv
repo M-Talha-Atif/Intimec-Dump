@@ -1,0 +1,3 @@
+externalRef,name,displayName,description,type,status,businessUnit,organization,businessFunction,classification,complianceTags,riskLevel,riskReason,ownerId,requestable,requireApproval,certificationSchedule,entitlementIds,childRoleIds,childRoleRefs,identityIds,rules
+SALES-LEAD-001,Sales Lead Role,Sales Lead,Role for sales leadership,business,ACTIVE,Sales,55555555-5555-5555-5555-555555555555,Sales Management,SALES,CRM,medium,Access to sales pipeline,,true,true,QUARTERLY,,,,5df00ac2-4ba9-484b-8771-8c99101af167,
+SALES-READ-001,Sales Read Access,Sales Read,Read-only sales system access,technical,ACTIVE,Sales,55555555-5555-5555-5555-555555555555,Reporting,SALES,READ,low,Read-only data,,false,false,,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb,,,,

@@ -1,0 +1,75 @@
+{
+  "roles": [
+    {
+      "name": "Finance Complex GPT Test 016",
+      "displayName": "Finance Complex GPT Test 016",
+      "type": "business",
+      "businessUnit": "Finance",
+      "entitlementIds": ["c5c84146-7023-4145-8cee-50607ae4715f"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 10,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "IN", "values": ["Finance", "Accounting"] }
+              ],
+              "conditionGroups": [
+                {
+                  "groupOperator": "OR",
+                  "interGroupOperator": "AND",
+                  "negated": false,
+                  "conditions": [
+                    { "field": "jobTitle", "operator": "CONTAINS", "value": "Analyst" },
+                    { "field": "status", "operator": "EQUALS", "value": "ACTIVE" }
+                  ],
+                  "conditionGroups": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HR Complex GPT Test 017",
+      "displayName": "HR Complex GPT Test 017",
+      "type": "business",
+      "businessUnit": "Human Resources",
+      "entitlementIds": ["b5d42bbb-a60c-4c59-98d0-2b2fb5aa0d03"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 20,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "jobTitle", "operator": "CONTAINS", "value": "HR" }
+              ],
+              "conditionGroups": [
+                {
+                  "groupOperator": "AND",
+                  "interGroupOperator": "AND",
+                  "negated": false,
+                  "conditions": [
+                    { "field": "status", "operator": "NOT_EQUALS", "value": "INACTIVE" }
+                  ],
+                  "conditionGroups": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

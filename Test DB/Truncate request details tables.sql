@@ -1,0 +1,3 @@
+truncate access_request_audit_log;
+truncate access_request_approval_steps;
+truncate access_request_provisioning;

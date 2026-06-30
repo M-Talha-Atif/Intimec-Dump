@@ -1,0 +1,379 @@
+
+import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Progress } from '@/components/ui/progress';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useWorkflowSimulation } from '@/hooks/useWorkflowSimulation';
+import { 
+  Play, RefreshCw, CheckCircle, XCircle, Clock, AlertTriangle,
+  User, FileText, Zap, UserCheck, Mail, Shield, Bot, 
+  TrendingUp, AlertCircle, MapPin
+} from 'lucide-react';
+
+interface SimulationStep {
+  id: string;
+  name: string;
+  type: string;
+  status: 'pending' | 'running' | 'completed' | 'failed' | 'skipped';
+  duration: number;
+  output?: any;
+  error?: string;
+  conditions?: string[];
+  riskLevel: string;
+  pathTaken?: string;
+  sodViolation?: boolean;
+  approvalRequired?: boolean;
+}
+
+interface WorkflowSimulatorProps {
+  workflow?: any;
+}
+
+const WorkflowSimulator = ({ workflow }: WorkflowSimulatorProps) => {
+  // Use real simulation hook - pass workflow ID if available
+  const workflowId = workflow?.id && workflow.id !== 'unsaved' ? workflow.id : '';
+  
+  const { isRunning, simulationResult, currentStep, error, startSimulation } = useWorkflowSimulation(
+    workflowId
+  );
+  
+  const [selectedIdentity, setSelectedIdentity] = useState('test-user');
+  
+  // Pre-fill input data with workflow context or default
+  const [inputData, setInputData] = useState('');
+  
+  // Update input data when workflow changes
+  React.useEffect(() => {
+    if (workflow?.context) {
+      // Use workflow context from designer
+      setInputData(JSON.stringify(workflow.context, null, 2));
+    } else {
+      // Use default template
+      setInputData(`{
+  "identity": {
+    "employeeId": "EMP001",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@company.com",
+    "department": "Engineering",
+    "title": "Software Developer",
+    "manager": "jane.smith@company.com",
+    "startDate": "2024-06-20",
+    "location": "New York",
+    "riskScore": 3.2,
+    "sensitiveAccess": ["Production DB", "Customer Data"]
+  },
+  "trigger": {
+    "type": "new_hire",
+    "source": "HR System",
+    "timestamp": "2024-06-20T09:00:00Z"
+  }
+}`);
+    }
+  }, [workflow]);
+  
+  // Real simulation function using backend API + WebSocket
+  const runSimulation = async () => {
+    try {
+      // Call the real simulation hook, passing workflow data if unsaved
+      await startSimulation(inputData, workflow);
+    } catch (err) {
+      console.error('Simulation error:', err);
+    }
+  };
+  
+  // Derive risk insights from real simulation results
+  const getRiskInsights = () => {
+    if (!simulationResult || simulationResult.length === 0) return null;
+    
+    const highRiskSteps = simulationResult.filter(s => s.riskLevel === 'high').length;
+    const failedSteps = simulationResult.filter(s => s.status === 'failed').length;
+    const sodViolations = simulationResult.filter(s => s.sodViolation).length;
+    const approvalSteps = simulationResult.filter(s => s.approvalRequired).length;
+    const totalDuration = simulationResult.reduce((sum, s) => sum + s.duration, 0);
+    
+    const overallRisk = highRiskSteps > 2 ? 'high' : highRiskSteps > 0 ? 'medium' : 'low';
+    
+    return {
+      overallRisk,
+      highRiskSteps,
+      failedSteps,
+      sodViolations,
+      approvalSteps,
+      totalDuration,
+      completedSteps: simulationResult.filter(s => s.status === 'completed').length,
+      totalSteps: simulationResult.length
+    };
+  };
+  
+  const riskInsights = getRiskInsights();
+
+  const testIdentities = [
+    { id: 'test-user', name: 'Standard User (Low Risk)', risk: 'low' },
+    { id: 'high-risk-user', name: 'Executive (High Risk)', risk: 'high' },
+    { id: 'contractor', name: 'External Contractor', risk: 'medium' },
+    { id: 'temp-user', name: 'Temporary Employee', risk: 'medium' }
+  ];
+
+  const getStepIcon = (type: string) => {
+    const icons = {
+      trigger: Zap,
+      'ai-decision': Bot,
+      condition: FileText,
+      approval: Shield,
+      provisioning: UserCheck,
+      notification: Mail
+    };
+    return icons[type as keyof typeof icons] || FileText;
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case 'completed': return <CheckCircle className="h-4 w-4 text-green-600" />;
+      case 'failed': return <XCircle className="h-4 w-4 text-red-600" />;
+      case 'running': return <RefreshCw className="h-4 w-4 text-blue-600 animate-spin" />;
+      case 'skipped': return <AlertTriangle className="h-4 w-4 text-yellow-600" />;
+      default: return <Clock className="h-4 w-4 text-gray-400" />;
+    }
+  };
+
+  const progress = simulationResult ? 
+    (simulationResult.filter(s => s.status === 'completed').length / simulationResult.length) * 100 : 0;
+
+  return (
+    <div className="grid grid-cols-2 gap-6 h-full">
+      {/* Input Panel */}
+      <div className="space-y-4">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <User className="h-5 w-5" />
+              Simulation Setup
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <Label>Test Identity</Label>
+              <Select value={selectedIdentity} onValueChange={setSelectedIdentity}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {testIdentities.map(identity => (
+                    <SelectItem key={identity.id} value={identity.id}>
+                      <div className="flex items-center gap-2">
+                        {identity.name}
+                        <Badge variant={identity.risk === 'high' ? 'destructive' : 
+                                       identity.risk === 'medium' ? 'default' : 'secondary'}>
+                          {identity.risk}
+                        </Badge>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div>
+              <Label>Identity Data (JSON)</Label>
+              <Textarea
+                value={inputData}
+                onChange={(e) => setInputData(e.target.value)}
+                className="font-mono text-sm h-64"
+                placeholder="Enter test identity data..."
+              />
+            </div>
+            
+            <div className="flex gap-2">
+              <Button 
+                onClick={runSimulation}
+                disabled={isRunning}
+                className="flex-1"
+              >
+                {isRunning ? (
+                  <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Play className="h-4 w-4 mr-2" />
+                )}
+                {isRunning ? 'Running Simulation...' : 'Start Simulation'}
+              </Button>
+              
+              <Button variant="outline">
+                Load Sample
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Simulation Insights - Based on Real Results */}
+        {riskInsights && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Simulation Insights
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm">Overall Risk:</span>
+                <Badge variant={riskInsights.overallRisk === 'high' ? 'destructive' : 
+                               riskInsights.overallRisk === 'medium' ? 'default' : 'secondary'}>
+                  {riskInsights.overallRisk}
+                </Badge>
+              </div>
+              <div className="text-sm">
+                <span className="font-medium">Total Duration:</span> {riskInsights.totalDuration}ms
+              </div>
+              <div className="text-sm">
+                <span className="font-medium">Progress:</span> {riskInsights.completedSteps}/{riskInsights.totalSteps} steps
+              </div>
+              {riskInsights.highRiskSteps > 0 && (
+                <div className="text-sm">
+                  <span className="font-medium">High Risk Steps:</span> {riskInsights.highRiskSteps}
+                </div>
+              )}
+              {riskInsights.approvalSteps > 0 && (
+                <div className="text-sm">
+                  <span className="font-medium">Approval Steps:</span> {riskInsights.approvalSteps}
+                </div>
+              )}
+              {riskInsights.failedSteps > 0 && (
+                <div className="text-sm text-red-600">
+                  <span className="font-medium">Failed Steps:</span> {riskInsights.failedSteps}
+                </div>
+              )}
+              {riskInsights.sodViolations > 0 && (
+                <div className="text-sm">
+                  <div className="flex items-center gap-1 text-red-600">
+                    <AlertCircle className="h-3 w-3" />
+                    <span className="font-medium">SoD Violations:</span> {riskInsights.sodViolations}
+                  </div>
+                </div>
+              )}
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+      </div>
+
+      {/* Results Panel */}
+      <div className="space-y-4">
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2">
+                <MapPin className="h-5 w-5" />
+                Execution Path & Results
+              </CardTitle>
+              {simulationResult && (
+                <Badge variant={progress === 100 ? 'default' : 'secondary'}>
+                  {Math.round(progress)}% Complete
+                </Badge>
+              )}
+            </div>
+            {simulationResult && (
+              <Progress value={progress} className="w-full" />
+            )}
+          </CardHeader>
+          
+          <CardContent>
+            {simulationResult ? (
+              <div className="space-y-3">
+                {simulationResult.map((step, index) => {
+                  const StepIcon = getStepIcon(step.type);
+                  const isCurrentStep = currentStep === index;
+                  
+                  return (
+                    <Card 
+                      key={step.id} 
+                      className={[
+                        isCurrentStep ? 'ring-2 ring-blue-500' : '',
+                        step.status === 'failed' ? 'border-red-200' : '',
+                        step.sodViolation ? 'border-l-4 border-l-red-500' : ''
+                      ].filter(Boolean).join(' ')}
+                    >
+                      <CardContent className="p-3">
+                        <div className="flex items-start gap-3">
+                          <div className="flex items-center gap-2">
+                            <StepIcon className="h-4 w-4 text-gray-600" />
+                            {getStatusIcon(step.status)}
+                          </div>
+                          
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="font-medium text-sm">{step.name}</span>
+                              <Badge variant={step.riskLevel === 'high' ? 'destructive' : 
+                                            step.riskLevel === 'medium' ? 'default' : 'secondary'}>
+                                {step.riskLevel}
+                              </Badge>
+                              {step.pathTaken && (
+                                <Badge variant="outline" className="text-xs">
+                                  Path: {step.pathTaken}
+                                </Badge>
+                              )}
+                            </div>
+                            
+                            {step.duration > 0 && (
+                              <p className="text-xs text-muted-foreground">
+                                Duration: {step.duration}ms
+                              </p>
+                            )}
+                            
+                            {step.conditions && (
+                              <div className="mt-1">
+                                {step.conditions.map((condition, i) => (
+                                  <Badge key={i} variant="outline" className="text-xs mr-1">
+                                    {condition}
+                                  </Badge>
+                                ))}
+                              </div>
+                            )}
+                            
+                            {step.sodViolation && (
+                              <div className="flex items-center gap-1 mt-1">
+                                <AlertCircle className="h-3 w-3 text-red-500" />
+                                <span className="text-xs text-red-600">SoD Violation Detected</span>
+                              </div>
+                            )}
+                            
+                            {step.output && (
+                              <pre className="text-xs bg-muted p-2 rounded mt-2 overflow-auto max-h-20">
+                                {JSON.stringify(step.output, null, 2)}
+                              </pre>
+                            )}
+                            
+                            {step.error && (
+                              <p className="text-xs text-red-600 mt-1">
+                                Error: {step.error}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="text-center py-12 text-muted-foreground">
+                <Play className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <p>Run a simulation to see workflow execution path and results</p>
+                <p className="text-xs mt-2">Includes risk assessment, SoD violation detection, and approval chain visualization</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default WorkflowSimulator;
+

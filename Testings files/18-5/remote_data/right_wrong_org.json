@@ -1,0 +1,30 @@
+{
+  "roles": [
+    {
+      "externalRef": "ORG-CORRECT-001",
+      "name": "Org Valid Role Alpha",
+      "displayName": "Org Valid Role Alpha",
+      "description": "Valid organization role",
+      "type": "business",
+      "status": "enabled",
+      "organization": "4a4ff3e1-882f-42ea-a1ce-26b14ab694d5",
+      "businessUnit": "Finance",
+      "businessFunction": "Accounting",
+      "requestable": true,
+      "requireApproval": true
+    },
+    {
+      "externalRef": "ORG-WRONG-001",
+      "name": "Org Invalid Role Alpha",
+      "displayName": "Org Invalid Role Alpha",
+      "description": "Invalid organization role",
+      "type": "business",
+      "status": "enabled",
+      "organization": "00000000-0000-0000-0000-000000000000",
+      "businessUnit": "Finance",
+      "businessFunction": "Accounting",
+      "requestable": true,
+      "requireApproval": true
+    }
+  ]
+}

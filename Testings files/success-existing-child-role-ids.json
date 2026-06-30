@@ -1,0 +1,85 @@
+{
+  "roles": [
+    {
+      "name": "Finance Parent GPT Test 005",
+      "displayName": "Finance Parent GPT Test 005",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Finance",
+      "entitlementIds": ["c5c84146-7023-4145-8cee-50607ae4715f"],
+      "childRoleIds": ["7a09aea4-77f5-47bc-a1ef-d64eb66be97b"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 10,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "EQUALS", "value": "Finance" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HR Parent GPT Test 006",
+      "displayName": "HR Parent GPT Test 006",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Human Resources",
+      "entitlementIds": ["b5d42bbb-a60c-4c59-98d0-2b2fb5aa0d03"],
+      "childRoleIds": ["463e0873-f710-40a7-b543-6373cd402087"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 20,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "EQUALS", "value": "Human Resources" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tech Parent GPT Test 007",
+      "displayName": "Tech Parent GPT Test 007",
+      "type": "technical",
+      "status": "ACTIVE",
+      "businessUnit": "Engineering",
+      "entitlementIds": ["ae572670-e582-46a1-8f89-eb1915405a0c"],
+      "childRoleIds": ["97951772-6739-4dd7-b911-bd5758207dd6"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 30,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "EQUALS", "value": "Engineering" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

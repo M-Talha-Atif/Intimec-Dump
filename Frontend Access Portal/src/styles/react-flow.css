@@ -1,0 +1,27 @@
+
+@import '@xyflow/react/dist/style.css';
+
+.react-flow__node-custom {
+    /* This class is a target for the custom node, but styles are applied via Tailwind in the component itself */
+    /* It prevents default node styles from interfering */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* UML Node Styles */
+.react-flow__node-umlRole {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+/* UML Entitlement Node Styles */
+.react-flow__node-umlEntitlement {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}

@@ -1,0 +1,34 @@
+{
+  "roles": [
+    {
+      "externalRef": "CHILD-VALID-001",
+      "name": "Child Role Valid Alpha",
+      "displayName": "Child Role Valid Alpha",
+      "description": "Valid child role",
+      "type": "technical",
+      "status": "enabled",
+      "organization": "c8d6214b-6338-4ccd-bf24-b3390b3ca032",
+      "businessUnit": "Engineering",
+      "businessFunction": "Access",
+      "requestable": false,
+      "requireApproval": false
+    },
+    {
+      "externalRef": "PARENT-CHILD-ID-TEST",
+      "name": "Parent Role Child Test Alpha",
+      "displayName": "Parent Role Child Test Alpha",
+      "description": "Mix of valid and invalid child IDs",
+      "type": "business",
+      "status": "enabled",
+      "organization": "c8d6214b-6338-4ccd-bf24-b3390b3ca032",
+      "businessUnit": "Engineering",
+      "businessFunction": "Access",
+      "childRoleIds": [
+        "fe2e593f-73a5-4942-893a-48807407e27a",
+        "00000000-0000-0000-0000-000000000123"
+      ],
+      "requestable": true,
+      "requireApproval": true
+    }
+  ]
+}

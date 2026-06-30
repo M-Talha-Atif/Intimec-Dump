@@ -1,0 +1,30 @@
+{
+  "roles": [
+    {
+      "externalRef": "APP-SUPPORT-8801",
+      "name": "Application Support Specialist",
+      "displayName": "Application Support Specialist",
+      "description": "Provides support and maintenance for enterprise applications",
+      "type": "application",
+      "status": "ACTIVE",
+      "ownerId": "eadb6f5f-7be6-4003-a308-557850f98829",
+      "businessUnit": "IT Support",
+      "organization": "11111111-1111-1111-1111-111111111111",
+      "businessFunction": "Application Support",
+      "classification": ["IT", "SUPPORT"],
+      "complianceTags": ["ACCESS", "MONITORING"],
+      "riskLevel": "medium",
+      "riskReason": "Access to troubleshoot and modify application configurations",
+      "requestable": true,
+      "requireApproval": true,
+      "certificationSchedule": "MONTHLY",
+      "identityIds": [
+        "4a1240b4-1e84-497f-9328-709a0b17c80f"
+      ],
+      "entitlementIds": [
+        "b5d42bbb-a60c-4c59-98d0-2b2fb5aa0d03",
+        "fc4172d8-105d-4ed7-a738-5cd5c70a6204"
+      ]
+    }
+  ]
+}

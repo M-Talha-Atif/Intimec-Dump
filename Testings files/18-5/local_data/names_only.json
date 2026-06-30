@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "externalRef": "CHILD-VALID-001",
+      "name": "Child Role Valid Alpha"
+    }
+  ]
+}
+
+// entitlements 
+// organization, identities, child roles

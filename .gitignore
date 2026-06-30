@@ -1,0 +1,43 @@
+
+# Java / Maven build output
+**/target/
+**/build/
+*.class
+*.jar
+*.war
+*.ear
+
+# Archives / dumps
+*.zip
+*.rar
+*.7z
+
+# Secrets / SSH keys
+*.pem
+*.key
+*id_rsa*
+*private*
+dokploy connections/
+*.env
+
+# Java / Maven build output
+**/target/
+**/build/
+*.class
+*.jar
+*.war
+*.ear
+
+# Archives / dumps
+*.zip
+*.rar
+*.7z
+
+# Secrets / SSH keys
+*.pem
+*.key
+*id_rsa*
+*private*
+dokploy connections/
+*.env
+node_modules

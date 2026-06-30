@@ -1,0 +1,67 @@
+{
+  "roles": [
+    {
+      "externalRef": "OPS-CHILD-9001",
+      "name": "Operations Read Alpha",
+      "displayName": "Operations Read Alpha",
+      "description": "Read access to operations systems",
+      "type": "technical",
+      "status": "ACTIVE",
+      "businessUnit": "Operations",
+      "organization": "11111111-1111-1111-1111-111111111111",
+      "businessFunction": "Monitoring",
+      "classification": ["OPS"],
+      "complianceTags": ["READ"],
+      "riskLevel": "low",
+      "riskReason": "Read-only operational data",
+      "requestable": false,
+      "requireApproval": false,
+      "entitlementIds": [
+        "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      ]
+    },
+    {
+      "externalRef": "OPS-CHILD-9002",
+      "name": "Operations Write Alpha",
+      "displayName": "Operations Write Alpha",
+      "description": "Write access to operations systems",
+      "type": "technical",
+      "status": "ACTIVE",
+      "businessUnit": "Operations",
+      "organization": "11111111-1111-1111-1111-111111111111",
+      "businessFunction": "Execution",
+      "classification": ["OPS"],
+      "complianceTags": ["WRITE"],
+      "riskLevel": "high",
+      "riskReason": "Can modify operational workflows",
+      "requestable": false,
+      "requireApproval": true,
+      "entitlementIds": [
+        "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
+      ]
+    },
+    {
+      "externalRef": "OPS-PARENT-9001",
+      "name": "Operations Supervisor Alpha",
+      "displayName": "Operations Supervisor Alpha",
+      "description": "Parent role for operations supervision with child access",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Operations",
+      "organization": "11111111-1111-1111-1111-111111111111",
+      "businessFunction": "Operations Management",
+      "classification": ["ISO", "OPS"],
+      "complianceTags": ["AUDIT", "PROCESS"],
+      "riskLevel": "medium",
+      "riskReason": "Supervisory control over operations workflows",
+      "requestable": true,
+      "requireApproval": true,
+      "certificationSchedule": "QUARTERLY",
+      "childRoleRefs": ["OPS-CHILD-9001", "OPS-CHILD-9002"],
+      "identityIds": [
+        "954d9e2f-a076-4a32-ade4-fc3c49293635",
+        "2dc42465-0f00-49a3-861d-82fc62723995"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+drop table access_request_audit_log;
+drop table access_request_approval_steps;
+drop table access_request_provisioning;

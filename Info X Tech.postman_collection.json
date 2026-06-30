@@ -1,0 +1,2070 @@
+{
+  "info": {
+    "_postman_id": "4ba13137-caec-4e8e-80e8-aed087e442f1",
+    "name": "Info X Tech",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39775139"
+  },
+  "item": [
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Get internal roles",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Get user roles",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjcwMTI5NDEsImV4cCI6MTc2NzAxNjU0MX0.AFtcmhGjfDipUDKdPhklTG1wwLPiHKwsiSCY36A0Z4w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"HR System Access 2\",\r\n  \"description\": \"Access to Human Resources management system\",\r\n  \"icon\": \"hr-icon.svg\",\r\n  \"tileActive\": true,\r\n  \"requireManagerApproval\": true,\r\n  \"maximumRiskLevel\": \"MEDIUM\",\r\n  \"allowSelfRequest\": true,\r\n  \"allowRequestForOthers\": false,\r\n  \"allowBulkRequest\": true,\r\n  \"objectFilteringEnabled\": true,\r\n  \"allowApplications\": true,\r\n  \"allowBusinessRoles\": false,\r\n  \"allowInternalRoles\": true,\r\n  \r\n  \"allowedRoles\": [\r\n    {\r\n      \"roleCode\": \"HR_ADMIN\"\r\n    },\r\n    {\r\n      \"roleCode\": \"HR_MANAGER\"\r\n    }\r\n  ],\r\n  \r\n \"accessScopeItems\": [\r\n  {\r\n    \"itemType\": \"APPLICATION\",\r\n    \"itemCode\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n  },\r\n  {\r\n    \"itemType\": \"APPLICATION\",\r\n    \"itemCode\": \"6d1b8e25-3e49-4e3a-9b5c-9e5dfc6c1234\"\r\n  },\r\n  {\r\n    \"itemType\": \"INTERNAL_ROLE\",\r\n    \"itemCode\": \"9a7c1b44-1c2f-4a9f-8c11-2d9a6e88abcd\"\r\n  }\r\n]\r\n,\r\n  \r\n  \"visualFilters\": [\r\n    {\r\n      \"filterName\": \"Department Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"department\",\r\n          \"operator\": \"IN\",\r\n          \"value\": \"[\\\"HR\\\", \\\"FINANCE\\\", \\\"ADMIN\\\"]\"\r\n        },\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"risk_level\",\r\n          \"operator\": \"LT\",\r\n          \"value\": \"HIGH\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"filterName\": \"Location Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"location\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"US\"\r\n        },\r\n        {\r\n          \"logicalOperator\": \"NOT\",\r\n          \"fieldName\": \"contract_type\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"EXTERNAL\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \r\n  \"visualFilterRules\": [\r\n    {\r\n      \"logicalOperator\": \"AND\",\r\n      \"fieldName\": \"job_level\",\r\n      \"operator\": \"GT\",\r\n      \"value\": \"3\"\r\n    },\r\n    {\r\n      \"logicalOperator\": \"OR\",\r\n      \"fieldName\": \"clearance_level\",\r\n      \"operator\": \"EQ\",\r\n      \"value\": \"SECRET\"\r\n    }\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/v1/user-roles/user/c3c4a9e8-1c52-4c47-bf3a-1d9d9e3f4b21",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "user-roles",
+                "user",
+                "c3c4a9e8-1c52-4c47-bf3a-1d9d9e3f4b21"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get role details",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Revoke the User Roles",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\" : \"f8e7d6c5-b4a3-9281-7069-5847362514ab\",\r\n    \"roleId\" : \"a7e54b78-6eee-4901-a8be-285e670718bf\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/v1/user-roles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "user-roles"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"identifier\": \"imadmin\",\r\n    \"password\": \"imadmin123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"identifier\": \"imadmin\",\r\n    \"password\": \"imadmin123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "transfer-encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-ID",
+                  "value": "req-9bfd0ee7-9d9a-48e2-86dd-fcfcba33c326"
+                },
+                {
+                  "key": "X-Correlation-ID",
+                  "value": "req-ef934e32-1043-4563-8289-f90f0d13158a"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Method"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Access-Control-Request-Headers"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 09 Feb 2026 11:29:12 GMT"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"timestamp\": \"2026-02-09T11:29:11.233889300Z\",\n    \"status\": 200,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzA2MzY1NTAsImV4cCI6MTc3MDY0MDE1MH0.4RT7uj2fa5ztXSoIBqmV3dlVJX6CZu2uDGGq3QH8mRo\",\n        \"expiresIn\": 3600,\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoicmVmcmVzaCIsInN1YiI6IjRiYjJjN2RmLTU2NzctNGNkMi1hMGQxLWFhZDNmYThhZmU4ZiIsImlhdCI6MTc3MDYzNjU1MCwiZXhwIjoxNzcwNjQwMTUwfQ.RWxAQnjf1bLmctRXLEym-2gQce_aNOh_olXTDRvDvSY\",\n        \"sessionId\": \"72690cb3-53f8-4ad6-82e2-97930945926f\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get user profile",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Access Portal",
+      "item": [
+        {
+          "name": "Tiles",
+          "item": [
+            {
+              "name": "Create Tile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjY0MTk4NDksImV4cCI6MTc2NjQyMzQ0OX0.lKW5oOFp7HIRyyxy56mZVsISxs5JjargLcPplXe1DcU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"HR System Access\",\r\n  \"description\": \"Access to Human Resources management system for employee data management\",\r\n  \"icon\": \"hr-icon.svg\",\r\n  \"tileActive\": true,\r\n  \"requireManagerApproval\": true,\r\n  \"maximumRiskLevel\": \"MEDIUM\",\r\n  \"allowSelfRequest\": true,\r\n  \"allowRequestForOthers\": false,\r\n  \"allowBulkRequest\": true,\r\n  \"objectFilteringEnabled\": true,\r\n  \"allowApplications\": true,\r\n  \"allowBusinessRoles\": false,\r\n  \"allowInternalRoles\": true,\r\n  \"allowedRoles\": [\r\n    {\r\n      \"roleCode\": \"ef2b8537-8653-4a13-abc5-e1e14f6088ed\"\r\n    },\r\n    {\r\n      \"roleCode\": \"b8f65c89-7fff-5a12-b9cf-396f771829cf\"\r\n    }\r\n  ],\r\n  \r\n  \"accessScopeItems\": [\r\n    {\r\n      \"itemType\": \"APPLICATION\",\r\n      \"itemCode\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n    },\r\n    {\r\n      \"itemType\": \"APPLICATION\",\r\n      \"itemCode\": \"6d1b8e25-3e49-4e3a-9b5c-9e5dfc6c1234\"\r\n    },\r\n    {\r\n      \"itemType\": \"INTERNAL_ROLE\",\r\n      \"itemCode\": \"9a7c1b44-1c2f-4a9f-8c11-2d9a6e88abcd\"\r\n    }\r\n  ],\r\n  \r\n  \"visualFilters\": [\r\n    {\r\n      \"filterName\": \"Department Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"fieldName\": \"department\",\r\n          \"logicalOperator\": \"AND\",\r\n          \"operator\": \"IN\",\r\n          \"value\": \"HR,FINANCE,ADMIN\"\r\n        },\r\n        {\r\n          \"fieldName\": \"risk_level\",\r\n          \"logicalOperator\": \"AND\",\r\n          \"operator\": \"LT\",\r\n          \"value\": \"HIGH\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"filterName\": \"Location Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"fieldName\": \"location\",\r\n          \"logicalOperator\": \"AND\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"US\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/tiles",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "tiles"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fetch Tile",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjYxNTQ2NTgsImV4cCI6MTc2NjE1ODI1OH0.tZy3zIhcAHWLzphlYhIlcWi8B-OE7j8ZmTsQkuh6Zno",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"HR System Access\",\r\n  \"description\": \"Access to Human Resources management system\",\r\n  \"icon\": \"hr-icon.svg\",\r\n  \"tileActive\": true,\r\n  \"requireManagerApproval\": true,\r\n  \"requireTraining\": false,\r\n  \"maximumRiskLevel\": \"MEDIUM\",\r\n  \"allowSelfRequest\": true,\r\n  \"allowRequestForOthers\": false,\r\n  \"allowBulkRequest\": true,\r\n  \"objectFilteringEnabled\": true,\r\n  \r\n  \"allowApplications\": true,\r\n  \"allowBusinessRoles\": false,\r\n  \"allowInternalRoles\": true,\r\n  \r\n  \"allowedRoles\": [\r\n    {\r\n      \"roleCode\": \"HR_ADMIN\"\r\n    },\r\n    {\r\n      \"roleCode\": \"HR_MANAGER\"\r\n    }\r\n  ],\r\n  \r\n  \"trainingRequirements\": [\r\n    {\r\n      \"trainingId\": \"TRAIN_001\"\r\n    },\r\n    {\r\n      \"trainingId\": \"TRAIN_005\"\r\n    }\r\n  ],\r\n  \r\n  \"accessScopeItems\": [\r\n    {\r\n      \"itemType\": \"APPLICATION\",\r\n      \"itemCode\": \"HR_SYSTEM\"\r\n    },\r\n    {\r\n      \"itemType\": \"APPLICATION\",\r\n      \"itemCode\": \"PAYROLL_SYSTEM\"\r\n    },\r\n    {\r\n      \"itemType\": \"INTERNAL_ROLE\",\r\n      \"itemCode\": \"DATA_VIEWER\"\r\n    }\r\n  ],\r\n  \r\n  \"visualFilters\": [\r\n    {\r\n      \"filterName\": \"Department Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"department\",\r\n          \"operator\": \"IN\",\r\n          \"value\": \"[\\\"HR\\\", \\\"FINANCE\\\", \\\"ADMIN\\\"]\"\r\n        },\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"risk_level\",\r\n          \"operator\": \"LT\",\r\n          \"value\": \"HIGH\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"filterName\": \"Location Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"location\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"US\"\r\n        },\r\n        {\r\n          \"logicalOperator\": \"NOT\",\r\n          \"fieldName\": \"contract_type\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"EXTERNAL\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \r\n  \"visualFilterRules\": [\r\n    {\r\n      \"logicalOperator\": \"AND\",\r\n      \"fieldName\": \"job_level\",\r\n      \"operator\": \"GT\",\r\n      \"value\": \"3\"\r\n    },\r\n    {\r\n      \"logicalOperator\": \"OR\",\r\n      \"fieldName\": \"clearance_level\",\r\n      \"operator\": \"EQ\",\r\n      \"value\": \"SECRET\"\r\n    }\r\n  ]\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/tiles/1a540389-7891-4899-ba57-69039a93d1f3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "tiles",
+                    "1a540389-7891-4899-ba57-69039a93d1f3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Tile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjYxNTgyNjgsImV4cCI6MTc2NjE2MTg2OH0.h_nyPbsYQHfSISxM355nAV3tdGWmQsiNaM77Pv6xUAI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"HR System Access update\",\r\n  \"description\": \"Access to Human Resources management system update\",\r\n  \"icon\": \"hr-icon.svg133\",\r\n  \"tileActive\": false,\r\n  \"requireManagerApproval\": false,\r\n  \"maximumRiskLevel\": \"MEDIUM\",\r\n  \"allowSelfRequest\": true,\r\n  \"allowRequestForOthers\": false,\r\n  \"allowBulkRequest\": true,\r\n  \"objectFilteringEnabled\": false,\r\n  \"allowApplications\": true,\r\n  \"allowBusinessRoles\": false,\r\n  \"allowInternalRoles\": true,\r\n  \r\n  \"allowedRoles\": [\r\n    {\r\n      \"roleCode\": \"1a540389-7891-4899-ba57-69039a93d1f4\"\r\n    }\r\n  ],\r\n  \r\n  \r\n  \"accessScopeItems\": [\r\n    {\r\n      \"itemType\": \"APPLICATION\",\r\n      \"itemCode\": \"1a540389-7891-4899-ba57-69039a93d1f8\"\r\n    }\r\n  ],\r\n  \r\n  \"visualFilters\": [\r\n    {\r\n      \"filterName\": \"Department Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"department\",\r\n          \"operator\": \"IN\",\r\n          \"value\": \"[\\\"HR\\\", \\\"FINANCE\\\", \\\"ADMIN\\\"]\"\r\n        },\r\n        {\r\n          \"logicalOperator\": \"AND\",\r\n          \"fieldName\": \"risk_level\",\r\n          \"operator\": \"LT\",\r\n          \"value\": \"HIGH\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"filterName\": \"Location Filter\",\r\n      \"rules\": [\r\n        {\r\n          \"logicalOperator\": \"OR\",\r\n          \"fieldName\": \"location\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"US\"\r\n        },\r\n        {\r\n          \"logicalOperator\": \"NOT\",\r\n          \"fieldName\": \"contract_type\",\r\n          \"operator\": \"EQ\",\r\n          \"value\": \"EXTERNAL\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \r\n  \"visualFilterRules\": [\r\n    {\r\n      \"logicalOperator\": \"AND\",\r\n      \"fieldName\": \"job_level\",\r\n      \"operator\": \"GT\",\r\n      \"value\": \"3\"\r\n    },\r\n    {\r\n      \"logicalOperator\": \"OR\",\r\n      \"fieldName\": \"clearance_level\",\r\n      \"operator\": \"EQ\",\r\n      \"value\": \"SECRET\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/tiles/1a540389-7891-4899-ba57-69039a93d1f3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "tiles",
+                    "1a540389-7891-4899-ba57-69039a93d1f3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fetch Tiles",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjYxNTQ2NTgsImV4cCI6MTc2NjE1ODI1OH0.tZy3zIhcAHWLzphlYhIlcWi8B-OE7j8ZmTsQkuh6Zno",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/tiles?page=0&size=30",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "tiles"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "30"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Tile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjYxNTgyNjgsImV4cCI6MTc2NjE2MTg2OH0.h_nyPbsYQHfSISxM355nAV3tdGWmQsiNaM77Pv6xUAI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/tiles/a6e7ebeb-dfe1-4897-97c0-1f175a29e168",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "tiles",
+                    "a6e7ebeb-dfe1-4897-97c0-1f175a29e168"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fetch Access Scope Items",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjcwOTMzNzQsImV4cCI6MTc2NzA5Njk3NH0.9u1nGTGbbki6x70Baoj17EUK7XuTkd9HikupogV_9P0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/tiles/e2380f48-a4f6-454e-83aa-4c08670fdbd5/access-scope",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "tiles",
+                    "e2380f48-a4f6-454e-83aa-4c08670fdbd5",
+                    "access-scope"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Fetch Access Scope Items",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/v1/access-portal/tiles/46572e31-ea20-42eb-9ae6-472a2bdd1026/access-scope",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "v1",
+                        "access-portal",
+                        "tiles",
+                        "46572e31-ea20-42eb-9ae6-472a2bdd1026",
+                        "access-scope"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "transfer-encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-e17f653c-3705-459a-8a12-06723d495fd8"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-5694b94e-7ffc-4c91-9c04-32e88a552da9"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 10 Feb 2026 13:09:02 GMT"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"data\": {\n        \"tileId\": \"46572e31-ea20-42eb-9ae6-472a2bdd1026\",\n        \"tileTitle\": \"lkflkjsf\",\n        \"tileCategory\": \"alkdsjf;lkdsjf\",\n        \"allowRequestForOthers\": true,\n        \"items\": [\n            {\n                \"id\": \"170f97d1-e179-4006-84e1-ed444760e220\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"aac0455e-e1e6-44d9-91f2-724ee18f30ed\",\n                \"itemName\": \"owner roles\",\n                \"itemDescription\": \"this is role\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"Admin User\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"19a39019-afce-4e2f-835e-f8cf9faae2af\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"1a64e294-bbf2-442f-9f8c-2b195cb6e21b\",\n                \"itemName\": \"test for assignment 1\",\n                \"itemDescription\": \"sdlajflds f;ldsajf;ldsjf\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"Admin User\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"1baa8d8b-8b5a-4f17-a8d2-09a3c81b56a9\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"3b9e6896-7d74-443c-b644-158141f18f9c\",\n                \"itemName\": \"testAdmin\",\n                \"itemDescription\": \"admin\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"high\",\n                \"itemOwner\": \"Khurram Yousaf\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"38b4d20f-2402-444e-90e2-9d7a6f685320\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"3f4ee585-2818-41d6-bc7d-d824ea5d6260\",\n                \"itemName\": \"view 55\",\n                \"itemDescription\": \"asdljf;ldsakf\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"System\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"3cc3adc5-6ee3-4955-80ee-fcf2f9f13e1c\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"9a109d99-a6e3-4bb8-8e88-6c5b6a21d406\",\n                \"itemName\": \"role is for enw implementat\",\n                \"itemDescription\": \"adskfjsd;fj;dslfj\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"Admin User\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"4398d93d-7f8b-4798-be23-8c07fc800eac\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"a7e54b78-6eee-4901-a8be-285e670718bf\",\n                \"itemName\": \"System Administrator\",\n                \"itemDescription\": \"Full system access with administrative privileges\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"high\",\n                \"itemOwner\": \"Neal Atouani\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"4b5b606d-ba77-4745-93a0-104d292fc1ad\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"bf5743b3-3f32-46b8-9af9-9265274ffc7a\",\n                \"itemName\": \"role for test for provisioning\",\n                \"itemDescription\": \"ljdlfj;lsdfj\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"Admin User\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"4be62683-c3df-4795-86a8-46c6fb840ce9\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"388b42be-d3d9-494d-97a9-bf470460370a\",\n                \"itemName\": \"2343214324\",\n                \"itemDescription\": \"adslkjfldsjf;l\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"Admin User\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"796d80db-3acd-4905-b3aa-038724e741a6\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"9dd5d6f6-6c29-4c25-9088-2c928bcecd6c\",\n                \"itemName\": \"Administrator\",\n                \"itemDescription\": \"System-generated Administrator role\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"System\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            },\n            {\n                \"id\": \"799974fa-9095-47b0-9598-49892b3104b4\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemCode\": \"7997db4b-45ac-4a6b-ab93-a16d60922bc5\",\n                \"itemName\": \"123\",\n                \"itemDescription\": \"adlkjfldf\",\n                \"itemIcon\": \"Shield\",\n                \"riskLevel\": \"low\",\n                \"itemOwner\": \"Admin User\",\n                \"department\": \"IT\",\n                \"allowRequestForOthers\": true\n            }\n        ],\n        \"page\": 0,\n        \"size\": 10,\n        \"totalElements\": 21,\n        \"totalPages\": 3,\n        \"last\": false\n    },\n    \"timestamp\": \"2026-02-10T18:09:02.5628846\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Requests",
+          "item": [
+            {
+              "name": "Create Request Submission",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjY0MTk4NDksImV4cCI6MTc2NjQyMzQ0OX0.lKW5oOFp7HIRyyxy56mZVsISxs5JjargLcPplXe1DcU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"overallJustification\": \"Access required to support Q4 financial reconciliation and on-call operational support.\",\r\n  \"items\": [\r\n    {\r\n      \"cartItemId\": \"7aaaef97-7bba-4077-a84f-dac601085e2b\",\r\n      \"validityDays\": 30,\r\n      \"urgency\": \"MEDIUM\",\r\n      \"justification\": \"Required for daily monitoring and troubleshooting of production issues.\"\r\n    },\r\n    {\r\n      \"cartItemId\": \"7aaaef97-7bba-4077-a84f-dac601085e2b\",\r\n      \"validityDays\": 14,\r\n      \"urgency\": \"HIGH\",\r\n      \"justification\": \"Temporary access needed for audit remediation activities.\"\r\n    }\r\n  ]\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/access-requests",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "access-requests"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Request History",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get Request Details",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzA5MTMxNTcsImV4cCI6MTc3MDkxNjc1N30.WDIFmizb6V-twKdgFeGSXr_PuPJZxN9m0EgQcjxU4gs",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/access-requests/9438d7ab-1b63-4922-afb0-24550b8ddfc2/details",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "access-requests",
+                    "9438d7ab-1b63-4922-afb0-24550b8ddfc2",
+                    "details"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Get Request Details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/v1/access-portal/access-requests/d658daec-5145-4b54-a9f0-e714e8c9bb89/details",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "v1",
+                        "access-portal",
+                        "access-requests",
+                        "d658daec-5145-4b54-a9f0-e714e8c9bb89",
+                        "details"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "transfer-encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-9312f3bd-fedb-4bc1-8f3a-3464f0f9b78d"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-f3887ccb-9174-4bb1-b3ae-d696efa67bd1"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 04 Feb 2026 14:06:14 GMT"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Access request details fetched\",\n    \"data\": {\n        \"requestId\": \"d658daec-5145-4b54-a9f0-e714e8c9bb89\",\n        \"requestedByUserId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n        \"requestedByUserName\": \"Admin User\",\n        \"overallJustification\": \"sdjfldsjfldsjf\",\n        \"status\": \"PROVISIONED\",\n        \"requestedAt\": \"2026-02-04T14:03:28.864104Z\",\n        \"lastUpdatedAt\": \"2026-02-04T14:03:28.864104Z\",\n        \"items\": [\n            {\n                \"itemId\": \"bfbb7e6d-f008-4a13-a6ab-70c01812bc53\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemName\": \"this is role for testing 1\",\n                \"requestTarget\": \"OTHERS\",\n                \"beneficiaryUserIds\": [\n                    \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                    \"cb07771b-2748-45c1-b643-803d21e8604c\"\n                ],\n                \"beneficiaryUserNames\": [\n                    \"employee06\",\n                    \"employee07\"\n                ],\n                \"validityDays\": 30,\n                \"urgency\": \"MEDIUM\",\n                \"justification\": \"helwjlwkj\",\n                \"tileId\": \"449a9a8d-5751-4754-9423-06a08eeecbeb\",\n                \"tileName\": \"this is for the title\",\n                \"provisioningStatuses\": [\n                    {\n                        \"provisioningId\": \"e719d4fb-c4a8-401f-8c4b-c13887b73bfd\",\n                        \"roleId\": \"bfbb7e6d-f008-4a13-a6ab-70c01812bc53\",\n                        \"targetUserId\": \"cb07771b-2748-45c1-b643-803d21e8604c\",\n                        \"status\": \"COMPLETED\",\n                        \"provisioningStartedAt\": \"2026-02-04T14:04:48.314772Z\",\n                        \"provisioningCompletedAt\": \"2026-02-04T14:04:48.393734Z\"\n                    },\n                    {\n                        \"provisioningId\": \"3a268f51-4039-422b-8214-57490349630c\",\n                        \"roleId\": \"bfbb7e6d-f008-4a13-a6ab-70c01812bc53\",\n                        \"targetUserId\": \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                        \"status\": \"COMPLETED\",\n                        \"provisioningStartedAt\": \"2026-02-04T14:04:48.311952Z\",\n                        \"provisioningCompletedAt\": \"2026-02-04T14:04:48.386281Z\"\n                    }\n                ]\n            }\n        ],\n        \"approvalSteps\": [\n            {\n                \"stepId\": \"ac40964a-7dcd-467c-b09b-8ad5f7270b28\",\n                \"roleId\": \"bfbb7e6d-f008-4a13-a6ab-70c01812bc53\",\n                \"targetUserId\": \"cb07771b-2748-45c1-b643-803d21e8604c\",\n                \"stepOrder\": 2,\n                \"approverRole\": \"SPECIFIC\",\n                \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                \"status\": \"APPROVED\",\n                \"createdAt\": \"2026-02-04T14:04:12.516958Z\",\n                \"respondedAt\": \"2026-02-04T14:04:47.003512Z\",\n                \"decision\": \"APPROVED\",\n                \"comments\": \"\"\n            },\n            {\n                \"stepId\": \"839262db-23ea-4e6b-87bf-cddc6cacffea\",\n                \"roleId\": \"bfbb7e6d-f008-4a13-a6ab-70c01812bc53\",\n                \"targetUserId\": \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                \"stepOrder\": 2,\n                \"approverRole\": \"SPECIFIC\",\n                \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                \"status\": \"APPROVED\",\n                \"createdAt\": \"2026-02-04T14:03:32.968681Z\",\n                \"respondedAt\": \"2026-02-04T14:04:11.982925Z\",\n                \"decision\": \"APPROVED\",\n                \"comments\": \"\"\n            }\n        ],\n        \"comments\": [],\n        \"auditLog\": [\n            {\n                \"logId\": \"d80d477a-71bb-481e-a96a-04b46f01cc94\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n                \"performedAt\": \"2026-02-04T14:04:47.004053Z\",\n                \"details\": \"UNKNOWN approved for role bfbb7e6d-f008-4a13-a6ab-70c01812bc53, user cb07771b-2748-45c1-b643-803d21e8604c: \"\n            },\n            {\n                \"logId\": \"3e74f628-addc-43d5-90f2-9d441816fd74\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-04T14:04:18.220375Z\",\n                \"details\": \"ROLE_OWNER approval assigned for role bfbb7e6d-f008-4a13-a6ab-70c01812bc53, user cb07771b-2748-45c1-b643-803d21e8604c\"\n            },\n            {\n                \"logId\": \"b7d7e465-d3bc-4af3-92c2-d6a911acd50c\",\n                \"action\": \"REQUEST_SUBMITTED\",\n                \"performedBy\": \"Admin User\",\n                \"performedAt\": \"2026-02-04T14:03:28.873251Z\",\n                \"newStatus\": \"SUBMITTED\",\n                \"details\": \"Access request submitted with 1 items\"\n            },\n            {\n                \"logId\": \"e6255c2d-16b7-4b20-bdca-7b67e04bd963\",\n                \"action\": \"PROVISIONING_STARTED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-04T14:04:48.315778Z\",\n                \"details\": \"Provisioning started for 2 users\"\n            },\n            {\n                \"logId\": \"228ead37-c777-4dd3-ad03-aa846faa5bc8\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-04T14:04:12.518025Z\",\n                \"details\": \"SPECIFIC approval assigned for role bfbb7e6d-f008-4a13-a6ab-70c01812bc53, user cb07771b-2748-45c1-b643-803d21e8604c\"\n            },\n            {\n                \"logId\": \"edb71145-8eae-407d-9c4f-afc6b64595c4\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-04T14:03:32.971198Z\",\n                \"details\": \"SPECIFIC approval assigned for role bfbb7e6d-f008-4a13-a6ab-70c01812bc53, user 203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\"\n            },\n            {\n                \"logId\": \"58ccf623-bb83-40ac-acba-441ecb4f7bb4\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                \"performedAt\": \"2026-02-04T14:04:11.98299Z\",\n                \"details\": \"UNKNOWN approved for role bfbb7e6d-f008-4a13-a6ab-70c01812bc53, user 203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1: \"\n            },\n            {\n                \"logId\": \"0e66639d-76a5-4c24-8de3-d0a19dcbb2a0\",\n                \"action\": \"PROVISIONING_COMPLETED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-04T14:04:48.408754Z\",\n                \"details\": \"All roles successfully provisioned\"\n            },\n            {\n                \"logId\": \"fddf9552-c30b-4870-b7b1-e727cac865d7\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                \"performedAt\": \"2026-02-04T14:04:17.225338Z\",\n                \"details\": \"UNKNOWN approved for role bfbb7e6d-f008-4a13-a6ab-70c01812bc53, user cb07771b-2748-45c1-b643-803d21e8604c: \"\n            }\n        ],\n        \"metadata\": {\n            \"totalItems\": 1,\n            \"approvedItems\": 0,\n            \"rejectedItems\": 0,\n            \"pendingItems\": 1,\n            \"riskScore\": 15,\n            \"hasSODConflicts\": false,\n            \"hasComplianceFlags\": false,\n            \"isEmergencyRequest\": false,\n            \"totalApprovalSteps\": 2,\n            \"completedApprovalSteps\": 2\n        }\n    },\n    \"timestamp\": \"2026-02-04T19:06:14.8647288\"\n}"
+                },
+                {
+                  "name": "Get Request Details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/v1/access-portal/access-requests/05b408c7-7b77-4c61-b702-64c92a4a746f/details",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "v1",
+                        "access-portal",
+                        "access-requests",
+                        "05b408c7-7b77-4c61-b702-64c92a4a746f",
+                        "details"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "transfer-encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-81088693-4802-44fb-b3a7-ac0fc8548247"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-50da5cab-b632-422a-921c-42f6ecc0a15c"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 09 Feb 2026 12:51:16 GMT"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Access request details fetched\",\n    \"data\": {\n        \"requestId\": \"05b408c7-7b77-4c61-b702-64c92a4a746f\",\n        \"requestedByUserId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n        \"requestedByUserName\": \"Admin User\",\n        \"overallJustification\": \"sadfsdf\",\n        \"status\": \"SUBMITTED\",\n        \"requestedAt\": \"2026-02-06T13:29:01.115171Z\",\n        \"lastUpdatedAt\": \"2026-02-06T13:29:01.115171Z\",\n        \"items\": [\n            {\n                \"itemId\": \"796365df-87f6-476f-8c33-ed82d265efe7\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemName\": \"03 feb 04\",\n                \"requestTarget\": \"OTHERS\",\n                \"beneficiaryUserIds\": [\n                    \"86abf2d0-5255-4bc6-8f39-6dbae9218460\"\n                ],\n                \"beneficiaryUserNames\": [\n                    \"employee011\"\n                ],\n                \"validityDays\": 30,\n                \"urgency\": \"MEDIUM\",\n                \"justification\": \"\",\n                \"tileId\": \"449a9a8d-5751-4754-9423-06a08eeecbeb\",\n                \"tileName\": \"this is for the title\",\n                \"provisioningStatuses\": [\n                    {\n                        \"provisioningId\": \"b7dc629b-b4e7-442c-9833-68a1e620d066\",\n                        \"targetUserId\": \"86abf2d0-5255-4bc6-8f39-6dbae9218460\",\n                        \"status\": \"FAILED\",\n                        \"provisioningStartedAt\": \"2026-02-06T13:45:14.144068Z\",\n                        \"provisioningCompletedAt\": \"2026-02-06T13:45:14.144068Z\",\n                        \"errorMessage\": \"HTTP request failed with status: 500\"\n                    }\n                ],\n                \"approvalSteps\": [\n                    {\n                        \"stepId\": \"0a0ad15e-f1f7-4a3f-bda6-735d2ef89f0d\",\n                        \"stepOrder\": 1,\n                        \"approverRole\": \"DYNAMIC\",\n                        \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                        \"status\": \"APPROVED\",\n                        \"createdAt\": \"2026-02-06T13:29:15.251467Z\",\n                        \"respondedAt\": \"2026-02-06T13:29:43.246955Z\",\n                        \"decision\": \"APPROVED\",\n                        \"comments\": \"\"\n                    },\n                    {\n                        \"stepId\": \"378529b2-c9db-4baf-989e-fd48e3fed7f1\",\n                        \"stepOrder\": 1,\n                        \"approverRole\": \"ROLE_OWNER\",\n                        \"assignedApproverId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n                        \"status\": \"APPROVED\",\n                        \"createdAt\": \"2026-02-06T13:29:44.228819Z\",\n                        \"respondedAt\": \"2026-02-06T13:35:25.173528Z\",\n                        \"decision\": \"APPROVED\",\n                        \"comments\": \"\"\n                    }\n                ]\n            }\n        ],\n        \"comments\": [],\n        \"auditLog\": [\n            {\n                \"logId\": \"9f93b6ab-442b-4fe0-a32c-019697cab541\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n                \"performedAt\": \"2026-02-06T13:35:25.173528Z\",\n                \"details\": \"ROLE_OWNER approved for role 796365df-87f6-476f-8c33-ed82d265efe7, user : \"\n            },\n            {\n                \"logId\": \"e99408dd-b04a-4d60-bd9b-847b8aaa5e30\",\n                \"action\": \"PROVISIONING_FAILED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-06T13:45:14.15659Z\",\n                \"details\": \"Provisioning failed for role 796365df-87f6-476f-8c33-ed82d265efe7: HTTP request failed with status: 500\"\n            },\n            {\n                \"logId\": \"e34843c6-9b93-4f77-bed6-40b02b52d160\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-06T13:29:44.228819Z\",\n                \"details\": \"ROLE_OWNER approval assigned for role 796365df-87f6-476f-8c33-ed82d265efe7, user \"\n            },\n            {\n                \"logId\": \"9641b04a-dfcd-48b7-bc95-280709eaa74e\",\n                \"action\": \"REQUEST_SUBMITTED\",\n                \"performedBy\": \"Admin User\",\n                \"performedAt\": \"2026-02-06T13:29:01.126249Z\",\n                \"newStatus\": \"SUBMITTED\",\n                \"details\": \"Access request submitted with 1 items\"\n            },\n            {\n                \"logId\": \"919e37f3-2d30-440c-bfdb-d9face176212\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                \"performedAt\": \"2026-02-06T13:29:43.248253Z\",\n                \"details\": \"DYNAMIC approved for role 796365df-87f6-476f-8c33-ed82d265efe7, user 86abf2d0-5255-4bc6-8f39-6dbae9218460: \"\n            },\n            {\n                \"logId\": \"b8ef7d66-3cfb-48a2-a6f7-8b3f6fde1390\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-06T13:29:15.253467Z\",\n                \"details\": \"DYNAMIC approval assigned for role 796365df-87f6-476f-8c33-ed82d265efe7, user 86abf2d0-5255-4bc6-8f39-6dbae9218460\"\n            }\n        ],\n        \"metadata\": {\n            \"totalItems\": 1,\n            \"approvedItems\": 0,\n            \"rejectedItems\": 0,\n            \"pendingItems\": 1,\n            \"riskScore\": 15,\n            \"hasSODConflicts\": false,\n            \"hasComplianceFlags\": false,\n            \"isEmergencyRequest\": false,\n            \"totalApprovalSteps\": 2,\n            \"completedApprovalSteps\": 2\n        }\n    },\n    \"timestamp\": \"2026-02-09T17:51:16.061572\"\n}"
+                },
+                {
+                  "name": "Get Request Details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/v1/access-portal/access-requests/9438d7ab-1b63-4922-afb0-24550b8ddfc2/details",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "v1",
+                        "access-portal",
+                        "access-requests",
+                        "9438d7ab-1b63-4922-afb0-24550b8ddfc2",
+                        "details"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "transfer-encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-0d89b632-922d-4e72-a5a4-fa5287f1e762"
+                    },
+                    {
+                      "key": "X-Correlation-ID",
+                      "value": "req-27ac75de-a480-4469-9b6d-57351ee68980"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 12 Feb 2026 16:19:31 GMT"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Access request details fetched\",\n    \"data\": {\n        \"requestId\": \"9438d7ab-1b63-4922-afb0-24550b8ddfc2\",\n        \"requestedByUserId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n        \"requestedByUserName\": \"Admin User\",\n        \"overallJustification\": \"overall\",\n        \"status\": \"PENDING_APPROVAL\",\n        \"requestedAt\": \"2026-02-12T16:13:38.631518Z\",\n        \"lastUpdatedAt\": \"2026-02-12T16:13:38.631518Z\",\n        \"items\": [\n            {\n                \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemName\": \"new role 9;:10 pm 12 feb\",\n                \"requestTarget\": \"OTHERS\",\n                \"beneficiaryUserIds\": [\n                    \"c9429700-5e02-46de-950b-e8117e4c9fb2\",\n                    \"e75fadc6-8f8b-43e8-a02d-fbfdd60be2ce\"\n                ],\n                \"beneficiaryUserNames\": [\n                    \"employee08\",\n                    \"employee09\"\n                ],\n                \"validityDays\": 30,\n                \"urgency\": \"MEDIUM\",\n                \"justification\": \"\",\n                \"tileId\": \"cfea645d-87c2-4186-ad6d-0e173f4dfa93\",\n                \"tileName\": \"title\",\n                \"provisioningStatuses\": [\n                    {\n                        \"provisioningId\": \"a8e15241-eed8-4c82-8330-6649eb8bfbf1\",\n                        \"targetUserId\": \"c9429700-5e02-46de-950b-e8117e4c9fb2\",\n                        \"status\": \"COMPLETED\",\n                        \"provisioningStartedAt\": \"2026-02-12T16:16:14.457301Z\",\n                        \"provisioningCompletedAt\": \"2026-02-12T16:16:15.257468Z\"\n                    },\n                    {\n                        \"provisioningId\": \"8d9980dd-073a-4234-a401-3b95026d41a8\",\n                        \"targetUserId\": \"e75fadc6-8f8b-43e8-a02d-fbfdd60be2ce\",\n                        \"status\": \"CANCELLED\",\n                        \"provisioningStartedAt\": \"2026-02-12T16:16:13.289465Z\",\n                        \"provisioningCompletedAt\": \"2026-02-12T16:16:13.289465Z\",\n                        \"errorMessage\": \"Request rejected during approval workflow\"\n                    }\n                ],\n                \"approvalSteps\": [\n                    {\n                        \"stepId\": \"b2299920-efae-4299-b8c5-c9e6c4f087a0\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"c9429700-5e02-46de-950b-e8117e4c9fb2\",\n                        \"targetUserName\": \"employee08\",\n                        \"stepOrder\": 1,\n                        \"approverRole\": \"MANAGER\",\n                        \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                        \"assignedApproverName\": \"manager\",\n                        \"status\": \"APPROVED\",\n                        \"createdAt\": \"2026-02-12T16:13:48.845393Z\",\n                        \"respondedAt\": \"2026-02-12T16:15:43.189704Z\",\n                        \"decision\": \"APPROVED\",\n                        \"comments\": \"aprpvoe\"\n                    },\n                    {\n                        \"stepId\": \"7017a3f8-584a-4b46-b261-0fbf65aeff59\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"e75fadc6-8f8b-43e8-a02d-fbfdd60be2ce\",\n                        \"targetUserName\": \"employee09\",\n                        \"stepOrder\": 2,\n                        \"approverRole\": \"MANAGER\",\n                        \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                        \"assignedApproverName\": \"manager\",\n                        \"status\": \"APPROVED\",\n                        \"createdAt\": \"2026-02-12T16:13:49.543803Z\",\n                        \"respondedAt\": \"2026-02-12T16:15:48.088131Z\",\n                        \"decision\": \"APPROVED\",\n                        \"comments\": \"approve\"\n                    },\n                    {\n                        \"stepId\": \"f7124385-3790-405b-80b0-4c5e3361d617\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"c9429700-5e02-46de-950b-e8117e4c9fb2\",\n                        \"targetUserName\": \"employee08\",\n                        \"stepOrder\": 3,\n                        \"approverRole\": \"ROLE_OWNER\",\n                        \"assignedApproverId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n                        \"assignedApproverName\": \"imadmin\",\n                        \"status\": \"APPROVED\",\n                        \"createdAt\": \"2026-02-12T16:15:48.405657Z\",\n                        \"respondedAt\": \"2026-02-12T16:16:07.721292Z\",\n                        \"decision\": \"APPROVED\",\n                        \"comments\": \"approve\"\n                    },\n                    {\n                        \"stepId\": \"b61ca183-0d82-4e79-a374-1ca13df75ae7\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"e75fadc6-8f8b-43e8-a02d-fbfdd60be2ce\",\n                        \"targetUserName\": \"employee09\",\n                        \"stepOrder\": 4,\n                        \"approverRole\": \"ROLE_OWNER\",\n                        \"assignedApproverId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n                        \"assignedApproverName\": \"imadmin\",\n                        \"status\": \"REJECTED\",\n                        \"createdAt\": \"2026-02-12T16:15:48.759511Z\",\n                        \"respondedAt\": \"2026-02-12T16:16:13.263656Z\",\n                        \"decision\": \"REJECTED\",\n                        \"comments\": \"rjeect\"\n                    }\n                ]\n            },\n            {\n                \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                \"itemType\": \"INTERNAL_ROLE\",\n                \"itemName\": \"new role 9;:10 pm 12 feb\",\n                \"requestTarget\": \"OTHERS\",\n                \"beneficiaryUserIds\": [\n                    \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                    \"cb07771b-2748-45c1-b643-803d21e8604c\"\n                ],\n                \"beneficiaryUserNames\": [\n                    \"employee06\",\n                    \"employee07\"\n                ],\n                \"validityDays\": 30,\n                \"urgency\": \"MEDIUM\",\n                \"justification\": \"\",\n                \"tileId\": \"cfea645d-87c2-4186-ad6d-0e173f4dfa93\",\n                \"tileName\": \"title\",\n                \"provisioningStatuses\": [\n                    {\n                        \"provisioningId\": \"6e21e236-9bdc-4401-ad2e-a1bdeac47bcc\",\n                        \"targetUserId\": \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                        \"status\": \"CANCELLED\",\n                        \"provisioningStartedAt\": \"2026-02-12T16:18:21.140499Z\",\n                        \"provisioningCompletedAt\": \"2026-02-12T16:18:21.140499Z\",\n                        \"errorMessage\": \"Request rejected during approval workflow\"\n                    },\n                    {\n                        \"provisioningId\": \"7acd4ec7-eb31-4ac3-864d-d8bcbdaeb926\",\n                        \"targetUserId\": \"cb07771b-2748-45c1-b643-803d21e8604c\",\n                        \"status\": \"CANCELLED\",\n                        \"provisioningStartedAt\": \"2026-02-12T16:15:36.873602Z\",\n                        \"provisioningCompletedAt\": \"2026-02-12T16:15:36.873602Z\",\n                        \"errorMessage\": \"Request rejected during approval workflow\"\n                    }\n                ],\n                \"approvalSteps\": [\n                    {\n                        \"stepId\": \"125375db-50a1-4b17-9871-1bcd7181dcce\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                        \"targetUserName\": \"employee06\",\n                        \"stepOrder\": 1,\n                        \"approverRole\": \"MANAGER\",\n                        \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                        \"assignedApproverName\": \"manager\",\n                        \"status\": \"APPROVED\",\n                        \"createdAt\": \"2026-02-12T16:13:48.899332Z\",\n                        \"respondedAt\": \"2026-02-12T16:15:31.483023Z\",\n                        \"decision\": \"APPROVED\",\n                        \"comments\": \"approved\"\n                    },\n                    {\n                        \"stepId\": \"844bb51d-4808-41bb-ad67-f7499ee39d1c\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"cb07771b-2748-45c1-b643-803d21e8604c\",\n                        \"targetUserName\": \"employee07\",\n                        \"stepOrder\": 2,\n                        \"approverRole\": \"MANAGER\",\n                        \"assignedApproverId\": \"e2f18f08-b7f1-407d-bde8-a583a92e1c64\",\n                        \"assignedApproverName\": \"manager\",\n                        \"status\": \"REJECTED\",\n                        \"createdAt\": \"2026-02-12T16:13:49.444853Z\",\n                        \"respondedAt\": \"2026-02-12T16:15:36.853007Z\",\n                        \"decision\": \"REJECTED\",\n                        \"comments\": \"rjeect\"\n                    },\n                    {\n                        \"stepId\": \"c3719e4b-ea4f-4c5a-9bd4-44ffd9bb1978\",\n                        \"itemId\": \"3a096c59-be62-44e4-9a11-f20b886a01c6\",\n                        \"targetUserId\": \"203c42c0-6cf2-42da-b8b7-d8ffbe3f39a1\",\n                        \"targetUserName\": \"employee06\",\n                        \"stepOrder\": 3,\n                        \"approverRole\": \"ROLE_OWNER\",\n                        \"assignedApproverId\": \"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\",\n                        \"assignedApproverName\": \"imadmin\",\n                        \"status\": \"REJECTED\",\n                        \"createdAt\": \"2026-02-12T16:15:37.663292Z\",\n                        \"respondedAt\": \"2026-02-12T16:18:21.122169Z\",\n                        \"decision\": \"REJECTED\",\n                        \"comments\": \"rejkejfkct\"\n                    }\n                ]\n            }\n        ],\n        \"comments\": [],\n        \"auditLog\": [\n            {\n                \"logId\": \"5816c39e-ac36-4ff4-b4dc-626aeb38792e\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:13:48.849394Z\",\n                \"details\": \"Approval assigned: manager (MANAGER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee08'.\"\n            },\n            {\n                \"logId\": \"a8fb0378-606c-4b6d-9d42-5523d43d8072\",\n                \"action\": \"PROVISIONING_STARTED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:16:14.459304Z\",\n                \"details\": \"Provisioning started for internal role 'new role 9;:10 pm 12 feb' for employee08\"\n            },\n            {\n                \"logId\": \"9b1c327f-ce47-4929-8af4-fc483582f75c\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:15:48.760513Z\",\n                \"details\": \"Approval assigned: imadmin (ROLE_OWNER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee09'.\"\n            },\n            {\n                \"logId\": \"fb677c8d-ca1a-4821-8ad5-38d35bf7e439\",\n                \"action\": \"PROVISIONING_FAILED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:16:13.301Z\",\n                \"details\": \"Provisioning cancelled for internal role 'new role 9;:10 pm 12 feb' for employee09 due to approval rejection\"\n            },\n            {\n                \"logId\": \"3c9613be-361a-477c-bf98-da78611cbe53\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:15:37.663292Z\",\n                \"details\": \"Approval assigned: imadmin (ROLE_OWNER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee06'.\"\n            },\n            {\n                \"logId\": \"b420a245-22ac-4eaa-a380-153016279df2\",\n                \"action\": \"APPROVAL_REJECTED\",\n                \"performedBy\": \"imadmin\",\n                \"performedAt\": \"2026-02-12T16:16:13.305999Z\",\n                \"details\": \"Approval rejected by imadmin (ROLE_OWNER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee09' with comments: rjeect.\"\n            },\n            {\n                \"logId\": \"99c9a43e-32ad-440c-a194-895a43668245\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"imadmin\",\n                \"performedAt\": \"2026-02-12T16:16:07.729293Z\",\n                \"details\": \"Approval approved by imadmin (ROLE_OWNER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee08' with comments: approve.\"\n            },\n            {\n                \"logId\": \"e505cd01-73ad-4a13-b1d5-8354d629eb45\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:13:48.899332Z\",\n                \"details\": \"Approval assigned: manager (MANAGER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee06'.\"\n            },\n            {\n                \"logId\": \"afd8689f-9b3b-429d-a772-11e1f27248ac\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"manager\",\n                \"performedAt\": \"2026-02-12T16:15:43.196911Z\",\n                \"details\": \"Approval approved by manager (MANAGER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee08' with comments: aprpvoe.\"\n            },\n            {\n                \"logId\": \"608d4cc3-4972-41be-b209-5cec72bad268\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:15:48.406658Z\",\n                \"details\": \"Approval assigned: imadmin (ROLE_OWNER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee08'.\"\n            },\n            {\n                \"logId\": \"97fd0199-1586-4f5b-bc8a-5e6f27ce832f\",\n                \"action\": \"PROVISIONING_COMPLETED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:16:15.257778Z\",\n                \"details\": \"internal role 'new role 9;:10 pm 12 feb' successfully assigned to employee08\"\n            },\n            {\n                \"logId\": \"98319fc6-a9e4-4a2e-8283-da27f3d16bc4\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:13:49.445858Z\",\n                \"details\": \"Approval assigned: manager (MANAGER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee07'.\"\n            },\n            {\n                \"logId\": \"d81c6f35-56f0-48ec-944a-f87ce6c2b384\",\n                \"action\": \"PROVISIONING_FAILED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:18:21.143445Z\",\n                \"details\": \"Provisioning cancelled for internal role 'new role 9;:10 pm 12 feb' for employee07, employee06 due to approval rejection\"\n            },\n            {\n                \"logId\": \"ee3c35cd-44a2-49d3-981a-64ef79fb0451\",\n                \"action\": \"APPROVAL_ASSIGNED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:13:49.54431Z\",\n                \"details\": \"Approval assigned: manager (MANAGER) assigned to approve INTERNAL_ROLE 'new role 9;:10 pm 12 feb' for user 'employee09'.\"\n            },\n            {\n                \"logId\": \"4b195572-2875-45bc-baeb-b63f76cc1a6c\",\n                \"action\": \"APPROVAL_REJECTED\",\n                \"performedBy\": \"imadmin\",\n                \"performedAt\": \"2026-02-12T16:18:21.169421Z\",\n                \"details\": \"Approval rejected by imadmin (ROLE_OWNER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee06' with comments: rejkejfkct.\"\n            },\n            {\n                \"logId\": \"8962d95c-d197-40d4-8c5e-9d870bd81313\",\n                \"action\": \"REQUEST_SUBMITTED\",\n                \"performedBy\": \"Admin User\",\n                \"performedAt\": \"2026-02-12T16:13:38.639047Z\",\n                \"newStatus\": \"SUBMITTED\",\n                \"details\": \"Access request submitted with 2 items\"\n            },\n            {\n                \"logId\": \"2e1867e7-d849-4b22-b3a5-c2d377b3ec09\",\n                \"action\": \"STATUS_CHANGED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:13:48.848393Z\",\n                \"details\": \"Request moved to pending approval - approval workflow started\"\n            },\n            {\n                \"logId\": \"043db85e-9cd5-4468-9232-dcb520a58b8c\",\n                \"action\": \"APPROVAL_REJECTED\",\n                \"performedBy\": \"manager\",\n                \"performedAt\": \"2026-02-12T16:15:36.882602Z\",\n                \"details\": \"Approval rejected by manager (MANAGER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee07' with comments: rjeect.\"\n            },\n            {\n                \"logId\": \"cbb1a839-1993-44ba-9d15-b126e85f689c\",\n                \"action\": \"PROVISIONING_FAILED\",\n                \"performedBy\": \"System\",\n                \"performedAt\": \"2026-02-12T16:15:36.875601Z\",\n                \"details\": \"Provisioning cancelled for internal role 'new role 9;:10 pm 12 feb' for employee07 due to approval rejection\"\n            },\n            {\n                \"logId\": \"e546f8f2-6fcf-4b99-b8cd-5d919efd1ac0\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"manager\",\n                \"performedAt\": \"2026-02-12T16:15:48.102172Z\",\n                \"details\": \"Approval approved by manager (MANAGER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee09' with comments: approve.\"\n            },\n            {\n                \"logId\": \"d7ee6803-23d2-41e3-b72f-0758a67e8977\",\n                \"action\": \"APPROVAL_APPROVED\",\n                \"performedBy\": \"manager\",\n                \"performedAt\": \"2026-02-12T16:15:31.493047Z\",\n                \"details\": \"Approval approved by manager (MANAGER) for INTERNAL_ROLE 'new role 9;:10 pm 12 feb' requested for user 'employee06' with comments: approved.\"\n            }\n        ],\n        \"metadata\": {\n            \"totalItems\": 2,\n            \"approvedItems\": 0,\n            \"rejectedItems\": 0,\n            \"pendingItems\": 2,\n            \"riskScore\": 30,\n            \"hasSODConflicts\": false,\n            \"hasComplianceFlags\": false,\n            \"isEmergencyRequest\": false,\n            \"totalApprovalSteps\": 7,\n            \"completedApprovalSteps\": 7\n        }\n    },\n    \"timestamp\": \"2026-02-12T21:19:31.8820487\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "With-Draw Request",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/access-requests/dfdb2a0d-ff0e-4212-9711-a0566bb5bff1/withdraw",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "access-requests",
+                    "dfdb2a0d-ff0e-4212-9711-a0566bb5bff1",
+                    "withdraw"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Cart",
+          "item": [
+            {
+              "name": "Add to Cart",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjcwOTcyNTUsImV4cCI6MTc2NzEwMDg1NX0.lpmBi-8TUVgVNBLuzvB6mo2RFjjNPHisu2kGCXaQPek",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"tileId\": \"e2380f48-a4f6-454e-83aa-4c08670fdbd5\",\r\n    \"itemType\": \"INTERNAL_ROLE\",\r\n    \"itemId\": \"3019ca32-7a0d-4f05-93fa-f4854e77c891\",\r\n    \"itemName\": \"HR Management System\",\r\n    \"itemDescription\": \"Access to HR application\",\r\n    \"requestType\": \"SELF\"\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/cart",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "cart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove from Cart",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get Cart Items",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjcyODY2MzYsImV4cCI6MTc2NzI5MDIzNn0._vZH5dA6yoIpHLzHrWcIym3slSpQoce5CtKdGx0xISE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/access-portal/cart",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "access-portal",
+                    "cart"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Analytics",
+          "item": [
+            {
+              "name": "Get analytics",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Identity",
+      "item": [
+        {
+          "name": "Fetch User Identity",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpZGVudGl0eUlkIjoiYWZhYTljM2QtZjA5Zi00YWY3LTkxZGMtZjE1MTk0ZDgyMDQ5IiwidGVuYW50SWQiOiJ0ZW5hbnRfMDAxIiwidXNlcm5hbWUiOiJlbXBsb3llZSIsInN1YiI6IjM5OGM0MTg2LWE5ZWEtNGMxOC1iYTUyLThlOTlhYjVmNWJhYyIsImlhdCI6MTc2ODkwODU1NSwiZXhwIjoxNzY4OTEyMTU1fQ.9ZrH-G-D8_9U-dewAvuFQV9tiJcQBz2eKPH_u5tx6rw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/v1/identity/f12c6e1a-d4df-4dcd-a6d8-90b9d09591a7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "identity",
+                "f12c6e1a-d4df-4dcd-a6d8-90b9d09591a7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch employee schema",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/v1/identity/schema/employee",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "identity",
+                "schema",
+                "employee"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch all identities",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjYzOTc2OTYsImV4cCI6MTc2NjQwMTI5Nn0.t1ya_JK20JUHL1disOyIF4415Qa8w0Y7_xIODnGepvQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/v1/identity",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "identity"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch non employee schema",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3Njk2MjU1OTgsImV4cCI6MTc2OTYyOTE5OH0.RXaYP_llUkGT36xtuG5ihyBQSiUv2X22ROfrfKsQjvE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"empO1@gmail.com\",\r\n  \"username\": \"employee1\",\r\n  \"password\": \"securePassword!\",\r\n  \"firstName\": \"emp11\",\r\n  \"lastName\": \"emp11\",\r\n  \"employeeId\": \"EMP-34324\",\r\n  \"jobTitle\": \"Software Engineer\",\r\n  \"department\": \"Engineering\",\r\n  \"managerId\": \"430fb449-03c3-4500-abfb-0a49ed7086b9\",\r\n  \"hireDate\": \"2026-01-07T00:00:00.000+00:00\",\r\n  \"status\": \"ACTIVE\",\r\n  \"extendedAttributes\": {\r\n    \"location\": \"HQ\",\r\n    \"team\": \"Backend\"\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/v1/identity/employee",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "identity",
+                "employee"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Entitlements",
+      "item": [
+        {
+          "name": "Fetch Entitlements",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Permissions",
+      "item": [
+        {
+          "name": "Get Path Permission",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Main Web Backend",
+      "item": [
+        {
+          "name": "Send Contact Details",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Talha\",\r\n  \"lastName\": \"Atif\",\r\n  \"email\": \"talha.atif@microtechx.com\",\r\n  \"company\": \"AidentX\",\r\n  \"reason\": \"General Inquiry\",\r\n  \"message\": \"Hi team, I would like to know more about your services and pricing.\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9000/api/contact",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "api",
+                "contact"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Application Permissions",
+      "item": [
+        {
+          "name": "Bulk Assign Roles",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NjkxNjM5NTAsImV4cCI6MTc2OTE2NzU1MH0.LMO6tr1xUcEebAdzlCVY1IgHoxI4ztb271POYx6NDYk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"roleUserMap\": {\r\n    \"ef2b8537-8653-4a13-abc5-e1e14f6088ed\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"Need Super Admin access for system maintenance\",\r\n      \"validityDays\": 30\r\n    },\r\n    \"aac0455e-e1e6-44d9-91f2-724ee18f30ed\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"Assigned as owner for role management\",\r\n      \"validityDays\": 90\r\n    },\r\n    \"ed0aa71f-1d3e-4448-a142-bb1537e12810\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"Operator role for daily operations\",\r\n      \"validityDays\": 60\r\n    },\r\n    \"abaf152e-c3a6-4274-b09e-f91baaa524d1\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"Reviewer access for approval workflows\",\r\n      \"validityDays\": 45\r\n    },\r\n    \"9dd5d6f6-6c29-4c25-9088-2c928bcecd6c\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"System Administrator privileges\",\r\n      \"validityDays\": 90\r\n    },\r\n    \"3b9e6896-7d74-443c-b644-158141f18f9c\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"Test admin role for development\",\r\n      \"validityDays\": 30\r\n    },\r\n    \"3019ca32-7a0d-4f05-93fa-f4854e77c891\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"View-only access for monitoring\",\r\n      \"validityDays\": 60\r\n    },\r\n    \"391c740f-e9ce-4ab9-b794-1e3d2e1c8d2f\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"Reviewer testing role\",\r\n      \"validityDays\": 45\r\n    },\r\n    \"a7e54b78-6eee-4901-a8be-285e670718bf\": {\r\n      \"userIds\": [\"4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f\"],\r\n      \"justification\": \"System Administrator with full privileges\",\r\n      \"validityDays\": 90\r\n    }\r\n  },\r\n  \"overallJustification\": \"Complete role assignment for admin user 'imadmin' (4bb2c7df-5677-4cd2-a0d1-aad3fa8afe8f) - All roles including Super Admin, Administrator, Reviewer, Operator, and Viewer roles assigned for comprehensive system access\",\r\n  \"overallValidityDays\": 90,\r\n  \"shouldSendNotification\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/v1/user-roles/assign-from-cart",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "user-roles",
+                "assign-from-cart"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Logs",
+      "item": [
+        {
+          "name": "Analytics",
+          "item": [
+            {
+              "name": "Enteries",
+              "item": [
+                {
+                  "name": "Error Volume Entries",
+                  "request": {
+                    "method": "GET",
+                    "header": []
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Error Categories Entries",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0MzEwMjUsImV4cCI6MTc3NDQzNDYyNX0.Vu7uZGFRtV7pCe9iMFgwpwlVg--n4bifhCZFYBuK-Ys",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/v1/logs/analytics/error-category-entries?category=PERMISSION_CHECK",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "v1",
+                        "logs",
+                        "analytics",
+                        "error-category-entries"
+                      ],
+                      "query": [
+                        {
+                          "key": "category",
+                          "value": "PERMISSION_CHECK"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Error Recurring Entries",
+                  "request": {
+                    "method": "GET",
+                    "header": []
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Kpis Entries",
+                  "request": {
+                    "method": "GET",
+                    "header": []
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Logs Kpis",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM5MjQ3NzYsImV4cCI6MTc3MzkyODM3Nn0.d_WROPYa6Fd941CqmIs6s6PIEF2JJ1UGr6uUH769Kck",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/logs/analytics/kpis?range=all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs",
+                    "analytics",
+                    "kpis"
+                  ],
+                  "query": [
+                    {
+                      "key": "range",
+                      "value": "all"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Error Volume by Hours",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0MzEwMjUsImV4cCI6MTc3NDQzNDYyNX0.Vu7uZGFRtV7pCe9iMFgwpwlVg--n4bifhCZFYBuK-Ys",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/logs/analytics/error-volume?timezone=Asia/Karachi",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs",
+                    "analytics",
+                    "error-volume"
+                  ],
+                  "query": [
+                    {
+                      "key": "timezone",
+                      "value": "Asia/Karachi"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Error Categories",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQwMDQzNzIsImV4cCI6MTc3NDAwNzk3Mn0.zFQrf1YPoVvQmlXXyp8u4KhohN2VsFOh1CRmYF8RvN4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/logs/analytics/error-category-distribution",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs",
+                    "analytics",
+                    "error-category-distribution"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Heat Map",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQwMTIwOTIsImV4cCI6MTc3NDAxNTY5Mn0.9if2odfD5LoL1nXrWqRo_57Ghh6yjXXvVZroPNI24Yo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/logs/analytics/heatmap?timezone=Asia/Karachi",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs",
+                    "analytics",
+                    "heatmap"
+                  ],
+                  "query": [
+                    {
+                      "key": "timezone",
+                      "value": "Asia/Karachi"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Corelation Chains",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQwMTIwOTIsImV4cCI6MTc3NDAxNTY5Mn0.9if2odfD5LoL1nXrWqRo_57Ghh6yjXXvVZroPNI24Yo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/logs/analytics/heatmap?timezone=Asia/Karachi",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs",
+                    "analytics",
+                    "heatmap"
+                  ],
+                  "query": [
+                    {
+                      "key": "timezone",
+                      "value": "Asia/Karachi"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Recurring Patterns",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "MTRR Trend",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0NDIxOTAsImV4cCI6MTc3NDQ0NTc5MH0.kDQRp7RsemykNU-2aU0ABqgWyXC9YLoUqIdZhCWpiUc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/logs/analytics/mttr-trend",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "logs",
+                    "analytics",
+                    "mttr-trend"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Logs Configuration",
+          "item": [
+            {
+              "name": "Logs Level",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Logs",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzEzMzE0MzEsImV4cCI6MTc3MTMzNTAzMX0.VND8gEweVcSZTSP0HMpjfC8txD2rx4W9O8-d8kKbP_g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"globalSearch\": \"req-b42aa57c-b264-42c1-84a1-d90662f788ac\",\r\n  \"level\": [\"ERROR\", \"WARN\"],\r\n  \"source\": [\"workflow\"],\r\n  \"microservice\": [\"log-service\"],\r\n  \"category\": \"SYSTEM\",\r\n  \"objectType\": [\"ORDER\"],\r\n  \"isPinned\": false,\r\n  \"isResolved\": false,\r\n  \"correlationId\": \"req-b42aa57c-b264-42c1-84a1-d90662f788ac\",\r\n  \"dateFrom\": 1771330008047,\r\n  \"dateTo\": 1771330908047,\r\n  \"customFields\": {\r\n    \"source\": \"*workflow*\",\r\n    \"details.correlationId\": \"req-b42aa57c-b264-42c1-84a1-d90662f788ac\"\r\n  },\r\n  \"tags\": [\"urgent\"],\r\n  \"page\": 0,\r\n  \"size\": 25,\r\n  \"sortBy\": \"@timestamp\",\r\n  \"sortOrder\": \"DESC\",\r\n  \"aggregateOnly\": false,\r\n  \"includeFields\": [\"message\", \"source\", \"level\"],\r\n  \"excludeFields\": [\"details\"]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/v1/logs/search",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "v1",
+                "logs",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auditing",
+      "item": [
+        {
+          "name": "Analytics",
+          "item": [
+            {
+              "name": "KpisCount",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM4NDkyMjgsImV4cCI6MTc3Mzg1MjgyOH0.Pyyw5e4NExhzYY9CoIGqwTu31532pNylokPIYEigF_k",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/audit-logs/analytics/kpis",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs",
+                    "analytics",
+                    "kpis"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Event Volume",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM5MTg3OTksImV4cCI6MTc3MzkyMjM5OX0.fh3KOu5Om5HoLqk1FhcATXmRdahNp-mDmFf5VNhihYE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/audit-logs/analytics/event-volume?range=all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs",
+                    "analytics",
+                    "event-volume"
+                  ],
+                  "query": [
+                    {
+                      "key": "range",
+                      "value": "all"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Event Distribution",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM4NTk1ODQsImV4cCI6MTc3Mzg2MzE4NH0.3UwNDWqiQUH2OrG2KXpv7ZnNNey-TEO7LFfcoLd_7lg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/audit-logs/analytics/event-distribution?range=all&limit=500",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs",
+                    "analytics",
+                    "event-distribution"
+                  ],
+                  "query": [
+                    {
+                      "key": "range",
+                      "value": "all"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Top Actors",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM4NDkyMjgsImV4cCI6MTc3Mzg1MjgyOH0.Pyyw5e4NExhzYY9CoIGqwTu31532pNylokPIYEigF_k",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/audit-logs/analytics/top-actors",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs",
+                    "analytics",
+                    "top-actors"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "HeatMap of Objects and Events",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM4NDkyMjgsImV4cCI6MTc3Mzg1MjgyOH0.Pyyw5e4NExhzYY9CoIGqwTu31532pNylokPIYEigF_k",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/audit-logs/analytics/heatmap",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs",
+                    "analytics",
+                    "heatmap"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Data",
+          "item": [
+            {
+              "name": "Get High Risk Data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzM5MTg3OTksImV4cCI6MTc3MzkyMjM5OX0.fh3KOu5Om5HoLqk1FhcATXmRdahNp-mDmFf5VNhihYE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/audit-logs?risk=high",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "audit-logs"
+                  ],
+                  "query": [
+                    {
+                      "key": "risk",
+                      "value": "high"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Workflows",
+      "item": [
+        {
+          "name": "Analytics",
+          "item": [
+            {
+              "name": "Entries",
+              "item": [
+                {
+                  "name": "Kpi Entries",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0NzYyMjcsImV4cCI6MTc3NDQ3OTgyN30.axqHGI4E7Op7Qw3MOIT6KdNdL6R1x_sEJUDv4Q777DU",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8081/api/v1/workflows/analytics/kpi-drilldown?kpiType=AI_DRIVEN_WORKFLOWS",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8081",
+                      "path": [
+                        "api",
+                        "v1",
+                        "workflows",
+                        "analytics",
+                        "kpi-drilldown"
+                      ],
+                      "query": [
+                        {
+                          "key": "kpiType",
+                          "value": "AI_DRIVEN_WORKFLOWS"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Workflow Kpis",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0NzIyMzAsImV4cCI6MTc3NDQ3NTgzMH0.AresCKghFw3eiNXv58uSiqZQ01HZvB9JNSt4mD9pGLA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/workflows/analytics/overview?timePeriod=ALL_TIME",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workflows",
+                    "analytics",
+                    "overview"
+                  ],
+                  "query": [
+                    {
+                      "key": "timePeriod",
+                      "value": "ALL_TIME"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Execution Trend",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0NzIyMzAsImV4cCI6MTc3NDQ3NTgzMH0.AresCKghFw3eiNXv58uSiqZQ01HZvB9JNSt4mD9pGLA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/workflows/analytics/execution-trend",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workflows",
+                    "analytics",
+                    "execution-trend"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Pie Chart Execution Distribution",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0NzIyMzAsImV4cCI6MTc3NDQ3NTgzMH0.AresCKghFw3eiNXv58uSiqZQ01HZvB9JNSt4mD9pGLA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/workflows/analytics/execution-distribution?timePeriod=ALL_TIME",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workflows",
+                    "analytics",
+                    "execution-distribution"
+                  ],
+                  "query": [
+                    {
+                      "key": "timePeriod",
+                      "value": "ALL_TIME"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Category Distribution",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRJZCI6InRlbmFudF8wMDEiLCJ1c2VybmFtZSI6ImltYWRtaW4iLCJzdWIiOiI0YmIyYzdkZi01Njc3LTRjZDItYTBkMS1hYWQzZmE4YWZlOGYiLCJpYXQiOjE3NzQ0NzIyMzAsImV4cCI6MTc3NDQ3NTgzMH0.AresCKghFw3eiNXv58uSiqZQ01HZvB9JNSt4mD9pGLA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/v1/workflows/analytics/category-distribution",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "v1",
+                    "workflows",
+                    "analytics",
+                    "category-distribution"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Applications",
+      "item": [
+        {
+          "name": "Fetch Applications",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch Application By Id",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

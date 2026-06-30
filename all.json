@@ -1,0 +1,17 @@
+{
+
+    "user": "postgres",
+
+    "password": "0;ZA9V{2`2Hu",
+
+    "table": "audit_logs",
+
+    "keyColumn": "id",
+
+    "passwordColumn": "password_hash",
+
+    "jdbcDriver": "org.postgresql.Driver",
+
+    "jdbcUrlTemplate": "jdbc:postgresql://host.docker.internal:5432/intimec"
+
+}

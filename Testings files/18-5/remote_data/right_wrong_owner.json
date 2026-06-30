@@ -1,0 +1,30 @@
+{
+  "roles": [
+    {
+      "externalRef": "OWNER-CORRECT-001",
+      "name": "Owner Correct Alpha",
+      "displayName": "Owner Correct Alpha",
+      "description": "Valid owner",
+      "type": "business",
+      "status": "enabled",
+      "organization": "20554dde-029e-431c-9de1-5da6f82be3af",
+      "businessUnit": "Operations",
+      "ownerId": "5df00ac2-4ba9-484b-8771-8c99101af167",
+      "requestable": true,
+      "requireApproval": true
+    },
+    {
+      "externalRef": "OWNER-WRONG-001",
+      "name": "Owner Wrong Alpha",
+      "displayName": "Owner Wrong Alpha",
+      "description": "Invalid owner",
+      "type": "business",
+      "status": "enabled",
+      "organization": "20554dde-029e-431c-9de1-5da6f82be3af",
+      "businessUnit": "Operations",
+      "ownerId": "00000000-0000-0000-0000-000000000999",
+      "requestable": true,
+      "requireApproval": true
+    }
+  ]
+}

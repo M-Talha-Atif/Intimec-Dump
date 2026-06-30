@@ -1,0 +1,55 @@
+{
+  "roles": [
+    {
+      "externalRef": "IDENTITY-VALID-001",
+      "name": "Identity Valid Role Alpha",
+      "displayName": "Identity Valid Role Alpha",
+      "description": "All valid identities",
+      "type": "application",
+      "status": "enabled",
+      "organization": "cfbfb53b-1332-40ef-97d8-9e793a9de2b6",
+      "businessUnit": "IT",
+      "businessFunction": "Support",
+      "requestable": true,
+      "requireApproval": true,
+      "identityIds": [
+        "5df00ac2-4ba9-484b-8771-8c99101af167",
+        "f6d5d315-d20f-41b9-a60d-21db3d3c380e"
+      ]
+    },
+    {
+      "externalRef": "IDENTITY-ONE-WRONG",
+      "name": "Identity One Wrong Alpha",
+      "displayName": "Identity One Wrong Alpha",
+      "description": "One invalid identity",
+      "type": "application",
+      "status": "enabled",
+      "organization": "cfbfb53b-1332-40ef-97d8-9e793a9de2b6",
+      "businessUnit": "IT",
+      "businessFunction": "Support",
+      "requestable": true,
+      "requireApproval": true,
+      "identityIds": [
+        "5df00ac2-4ba9-484b-8771-8c99101af167",
+        "00000000-0000-0000-0000-000000000001"
+      ]
+    },
+    {
+      "externalRef": "IDENTITY-TWO-WRONG",
+      "name": "Identity Two Wrong Alpha",
+      "displayName": "Identity Two Wrong Alpha",
+      "description": "Two invalid identities",
+      "type": "application",
+      "status": "enabled",
+      "organization": "cfbfb53b-1332-40ef-97d8-9e793a9de2b6",
+      "businessUnit": "IT",
+      "businessFunction": "Support",
+      "requestable": true,
+      "requireApproval": true,
+      "identityIds": [
+        "00000000-0000-0000-0000-000000000002",
+        "00000000-0000-0000-0000-000000000003"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+export { useEntitlementsTable } from "./useEntitlementsTable";

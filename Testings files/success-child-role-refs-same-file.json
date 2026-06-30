@@ -1,0 +1,52 @@
+{
+  "roles": [
+    {
+      "externalRef": "CHILD_FIN_001",
+      "name": "Child Finance GPT Test 008",
+      "displayName": "Child Finance GPT Test 008",
+      "type": "business",
+      "businessUnit": "Finance",
+      "entitlementIds": ["c5c84146-7023-4145-8cee-50607ae4715f"]
+    },
+    {
+      "externalRef": "CHILD_HR_001",
+      "name": "Child HR GPT Test 009",
+      "displayName": "Child HR GPT Test 009",
+      "type": "business",
+      "businessUnit": "Human Resources",
+      "entitlementIds": ["b5d42bbb-a60c-4c59-98d0-2b2fb5aa0d03"]
+    },
+    {
+      "name": "Parent Finance GPT Test 010",
+      "displayName": "Parent Finance GPT Test 010",
+      "type": "business",
+      "businessUnit": "Finance",
+      "childRoleRefs": ["CHILD_FIN_001"],
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 10,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "department", "operator": "EQUALS", "value": "Finance" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Parent HR GPT Test 011",
+      "displayName": "Parent HR GPT Test 011",
+      "type": "business",
+      "businessUnit": "Human Resources",
+      "childRoleRefs": ["CHILD_HR_001"]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "roles": [
+    {
+      "name": "Missing Name Role"
+    },
+    {
+      "externalRef": "MISS-TYPE-001",
+      "name": "Missing Type Role"
+    },
+    {
+      "externalRef": "MISS-BU-001",
+      "name": "Missing BU Role",
+      "displayName": "Missing BU Role"
+    }
+  ]
+}

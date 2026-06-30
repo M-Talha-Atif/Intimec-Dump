@@ -1,0 +1,15 @@
+server:
+  port: ${SERVER_PORT:9080}
+
+spring:
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:info.intimec@gmail.com}
+    password: ${MAIL_PASSWORD:oaef ycjg erye qtyd}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

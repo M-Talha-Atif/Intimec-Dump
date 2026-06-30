@@ -1,0 +1,55 @@
+{
+  "roles": [
+    {
+      "name": "Finance Analyst GPT Test 012",
+      "displayName": "Finance Analyst GPT Test 012",
+      "type": "business",
+      "businessUnit": "Finance",
+      "entitlementIds": ["c5c84146-7023-4145-8cee-50607ae4715f"]
+    },
+    {
+      "name": "Finance Analyst GPT Test 012",
+      "displayName": "Finance Analyst GPT Test 012",
+      "type": "business",
+      "businessUnit": "Finance"
+    },
+    {
+      "name": "Invalid Child Role GPT Test 013",
+      "displayName": "Invalid Child Role GPT Test 013",
+      "type": "business",
+      "businessUnit": "Finance",
+      "childRoleIds": ["invalid-uuid"]
+    },
+    {
+      "name": "Invalid Rule Field GPT Test 014",
+      "displayName": "Invalid Rule Field GPT Test 014",
+      "type": "business",
+      "businessUnit": "Human Resources",
+      "rules": [
+        {
+          "enabled": true,
+          "priority": 10,
+          "identityTypes": ["Employee"],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                { "field": "location", "operator": "EQUALS", "value": "NY" }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Valid Engineer GPT Test 015",
+      "displayName": "Valid Engineer GPT Test 015",
+      "type": "technical",
+      "businessUnit": "Engineering",
+      "entitlementIds": ["ae572670-e582-46a1-8f89-eb1915405a0c"]
+    }
+  ]
+}

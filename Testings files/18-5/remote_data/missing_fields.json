@@ -1,0 +1,37 @@
+{
+  "roles": [
+    {
+      "externalRef": "MISS-NAME-001",
+      "displayName": "Missing Name Role",
+      "description": "Missing name",
+      "type": "business",
+      "status": "enabled",
+      "organization": "47cd9ef4-e0ed-46f5-9de5-df8b2f6a42be",
+      "businessUnit": "HR",
+      "requestable": true,
+      "requireApproval": true
+    },
+    {
+      "externalRef": "MISS-TYPE-001",
+      "name": "Missing Type Role",
+      "displayName": "Missing Type Role",
+      "description": "Missing type",
+      "status": "enabled",
+      "organization": "47cd9ef4-e0ed-46f5-9de5-df8b2f6a42be",
+      "businessUnit": "HR",
+      "requestable": true,
+      "requireApproval": true
+    },
+    {
+      "externalRef": "MISS-BU-001",
+      "name": "Missing BU Role",
+      "displayName": "Missing BU Role",
+      "description": "Missing business unit",
+      "type": "functional",
+      "status": "enabled",
+      "organization": "47cd9ef4-e0ed-46f5-9de5-df8b2f6a42be",
+      "requestable": true,
+      "requireApproval": true
+    }
+  ]
+}

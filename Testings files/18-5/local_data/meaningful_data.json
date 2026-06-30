@@ -1,0 +1,23 @@
+{
+  "roles": [
+    {
+      "name": "Engineering Read Access 2",
+      "displayName": "Engineering Read Access 2",
+      "description": "Provides read-only access to engineering systems and dashboards 2",
+      "type": "functional",
+      "status": "enabled",
+      "organization": "55555555-5555-5555-5555-555555555545",
+      "businessUnit": "Engineering",
+      "businessFunction": "Access Control",
+      "entitlementIds": [
+       "c5c84146-7023-4145-8cee-50607ae4715f",
+       "916e4fd8-0dd8-4a1e-a7a7-1641b93faf61"
+      ],
+      "requestable": false,
+      "requireApproval": false,
+          "identityIds": [
+       "f1f1f1f1-0001-0001-0001-000000000021"
+      ]
+    }
+  ]
+}

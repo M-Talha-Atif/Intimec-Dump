@@ -1,0 +1,45 @@
+{
+  "roles": [
+    {
+      "externalRef": "HR-PARENT-001",
+      "name": "HR Manager Role 33",
+      "displayName": "HR Manager 33",
+      "description": "Parent role for HR management with child role inheritance",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Human Resources",
+      "organization": "33333333-3333-3333-3333-333333333333",
+      "businessFunction": "Employee Management",
+      "classification": ["GDPR", "HR"],
+      "complianceTags": ["PII"],
+      "riskLevel": "medium",
+      "riskReason": "Access to employee sensitive data",
+      "requestable": true,
+      "requireApproval": true,
+      "certificationSchedule": "ANNUALLY",
+      "childRoleRefs": ["HR-READ-001"],
+      "identityIds": [
+        "04d56972-8f70-4289-866d-d464ab8e08f6",
+        "5b8a6fdc-5e45-499a-9569-d4855cb17b38"
+      ]
+    },
+    {
+      "externalRef": "HR-READ-001",
+      "name": "HR Read Access 45",
+      "displayName": "HR Read 45",
+      "description": "Read-only access to HR systems",
+      "type": "technical",
+      "status": "ACTIVE",
+      "businessUnit": "Human Resources",
+      "organization": "33333333-3333-3333-3333-333333333333",
+      "businessFunction": "Reporting",
+      "classification": ["GDPR"],
+      "complianceTags": ["READ"],
+      "riskLevel": "low",
+      "riskReason": "Read-only employee data",
+      "entitlementIds": [
+        "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      ]
+    }
+  ]
+}

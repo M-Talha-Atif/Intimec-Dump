@@ -1,0 +1,123 @@
+{
+  "roles": [
+    {
+      "externalRef": "IMP-FINANCE-ANALYST-002",
+      "name": "Import Sample Finance Analyst",
+      "displayName": "Import Sample Finance Analyst",
+      "description": "Finance analyst business role imported with existing child roles and finance entitlement.",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Finance",
+      "businessFunction": "Financial Operations",
+      "classification": [
+        "confidential",
+        "finance"
+      ],
+      "complianceTags": [
+        "SOX",
+        "FINANCE_REVIEW"
+      ],
+      "riskLevel": "MEDIUM",
+      "riskReason": "Finance users can access sensitive finance data.",
+      "requestable": true,
+      "requireApproval": true,
+      "certificationSchedule": "QUARTERLY",
+      "entitlementIds": [
+        "916e4fd8-0dd8-4a1e-a7a7-1641b93faf61"
+      ],
+      "childRoleIds": [
+        "7a09aea4-77f5-47bc-a1ef-d64eb66be97b"
+      ],
+      "rules": [
+        {
+          "enabled": true,
+          "identityTypes": [
+            "Employee"
+          ],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                {
+                  "field": "department",
+                  "operator": "EQUALS",
+                  "value": "Finance"
+                },
+                {
+                  "field": "status",
+                  "operator": "EQUALS",
+                  "value": "ACTIVE"
+                }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalRef": "IMP-HR-RECRUITER-002",
+      "name": "Import Sample HR Recruiter",
+      "displayName": "Import Sample HR Recruiter",
+      "description": "HR recruiter role with existing child role and HR entitlement.",
+      "type": "business",
+      "status": "ACTIVE",
+      "businessUnit": "Human Resources",
+      "businessFunction": "Recruitment",
+      "classification": [
+        "internal",
+        "hr"
+      ],
+      "complianceTags": [
+        "HR_REVIEW",
+        "PII"
+      ],
+      "riskLevel": "MEDIUM",
+      "riskReason": "HR role may access candidate and employee personal information.",
+      "requestable": true,
+      "requireApproval": true,
+      "certificationSchedule": "MONTHLY",
+      "entitlementIds": [
+        "b5d42bbb-a60c-4c59-98d0-2b2fb5aa0d03"
+      ],
+      "childRoleIds": [
+        "463e0873-f710-40a7-b543-6373cd402087"
+      ],
+      "rules": [
+        {
+          "enabled": true,
+          "identityTypes": [
+            "Employee"
+          ],
+          "conditionGroups": [
+            {
+              "groupOperator": "AND",
+              "interGroupOperator": "AND",
+              "negated": false,
+              "conditions": [
+                {
+                  "field": "department",
+                  "operator": "EQUALS",
+                  "value": "Human Resources"
+                },
+                {
+                  "field": "jobTitle",
+                  "operator": "CONTAINS",
+                  "value": "Recruiter"
+                },
+                {
+                  "field": "status",
+                  "operator": "EQUALS",
+                  "value": "ACTIVE"
+                }
+              ],
+              "conditionGroups": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
